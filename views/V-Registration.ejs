@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title> 
+        <%= title  %>    
+        </title>
+    <link rel="icon" type="image/x-icon" href="/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg">
+        <link rel="stylesheet" href="/css/vform.css">
+    </head>
+    <body>
+
+        <form action="/create-contact" method="post">
+        <div class="cover">
+        <div class="top">
+              <h1>Vendor Registration Form</h1>
+            Please fill all the texts in the fields.
+        </div><hr>
+        <div class="main">
+            <p>*Required fields</p>
+
+            <span>  <label for="name">Name</label>
+                <sup>*</sup>:<input type="text" name="name" id="name" required placeholder="Your Full Name">
+        </span><br>
+
+          <span> <label for="emailId">Email:</label>
+            <input type="email" name="emailId" id="emailId" placeholder="Valid email Address">
+        </span><br>
+
+        <span><label for="phone">Phone no.</label>
+            <sup>*</sup>:<br> <input type="number" name="phone" id="phone" required placeholder="9XXXXXXX10"></span><br>
+
+            <span><label for="pin">Pincode</label>
+                <sup>*</sup>:<br> <input type="number" name="pin" id="pin" required placeholder="XXXXXX"></span><br>    
+
+        <span><label for="message">About:</label> 
+            <textarea name="message" id="message" cols="30" rows="10"  placeholder="Your message to potential customers"></textarea></span>
+
+        <span><label for="skill">Profession</label>
+            <sup>*</sup>:
+             <select name="skill" id="skill" required>
+            <option value="" selected>---Select profession---</option>
+            <option value="mason">Mason</option>
+            <option value="carpenter">Carpenter</option>
+            <option value="electrician"> Electrician</option>
+            <option value="plumber">Plumber</option>
+            <option value="painter">Painter</option>
+        </select></span><br> <hr>
+
+        <input type="submit">&NonBreakingSpace; <input type="reset">
+         </div>
+        </div>
+    </form>
+
+
+        
+        <!-- <h1> Vendor's Form</h1>
+        <form action="/create-contact" method="post">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="enter name" required>
+
+            <label for="phnNo">Mob. no</label>
+            <input type="number" name="phone" id="phnNo" placeholder="enter phn. no" required>
+
+            <label for="pin">Pincode</label>
+            <input type="number" name="pin" id="pin" required> -->
+
+        <!-- <label for="skill">Choose a Profession:</label>
+    <select name="skill" id="skill" required>
+  <option value="" selected>--Select--</option>
+  <option value="plumber">Plumber</option>
+  <option value="electrician">Electrician</option>
+  <option value="carpenter">Carpenter</option>
+  <option value="mason">Mason</option>
+  <option value="mechanic">Mechanic</option>
+</select> -->
+        <!-- <button type="reset">Reset</button>
+            <button type="submit">Add contact</button>
+        </form> -->
+    </body>
+</html>

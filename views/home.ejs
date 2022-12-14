@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceHub</title>
+    <link rel="icon" type="image/x-icon" href="/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/02f87c0745.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <nav id="navbar">
+    
+            <div id="logo"><img src="images/logoG.png" alt="Logo">
+            </div>
+    
+            <ul>
+                <li class="item"><a href="#">Home</a></li>
+                <li class="item"><a href="#">Survey Reports</a></li>
+                <li class="item"><a href="#">Blog</a></li>
+                <li class="item"><a href="/newRegistrationPage">Register as Professional</a></li> 
+            </ul>
+    
+            <div id="signIN">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                
+                 <a href="/users/sign_up"><button> Sign Up</button> </a>
+                 <a href="/users/sign_in"><button>Log In</button></a>
+            
+            </div>
+    
+            <!-- <div id="connectWU">
+                <a href="https://www.instagram.com/?hl=en" target="_blank"><img src="instagram-logo.png" alt="Instagram"></a>
+                <a href="https://www.facebook.com/" target="-blank"><img src="facebook-logo.png" alt="Facebook"></a>
+                <a href="https://twitter.com/login" target="-blank"><img src="logo-twitter-png-5860.png" alt="Twitter"></a>
+                <a href="https://www.youtube.com/" target="-blank"><img src="youtube-logo.png" alt="Youtube"></a>
+            </div> -->
+        </nav>
+    </header>
+        <section id="Home">
+            <h1 id="h-primary">Welcome to Our Website!</h1>
+
+            <p class="p1">`Our motto is to bridge the gap between the service seekers and service providers`</p>   
+
+             <form action="" id="find">         
+            <input type="text" name="search" id="search" placeholder='search service'>
+            <input type="number" name="pinSelect" id="pinSelect" placeholder="enter pincode">
+            <button onclick="findFunction()"class="btn" ><i class="fa-solid fa-magnifying-glass" ></i></button>
+            </form> 
+        </section>
+    
+        <section id="services-Container">
+            <h1 class="h-primary center">Our Services</h1>
+    
+            <div id="services">
+            <div class="service" id="card1">
+                <img src="/images/electrician2.png" alt="pizza png PNG">
+               <h2 class="h-secondary center"> Electrician</h2>           
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tempora voluptatem aspernatur incidunt voluptatibus quisquam!</p>
+            </div>
+            <div class="service" id="card2">
+                <img src="images/plumb.png" alt="pizza png PNG">
+                <h2 class="h-secondary center">Plumbing</h2>            
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tempora voluptatem aspernatur incidunt voluptatibus quisquam!</p>
+            </div>
+            <div class="service" id="card3">
+                <img src="images/painting.png" alt="pizza png PNG">
+                <h2 class="h-secondary center">Painting</h2>            
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tempora voluptatem aspernatur incidunt voluptatibus quisquam!</p>
+    
+               
+            </div>
+        </div>
+        </section>
+        <section id="client-section">
+            <h1 class="h-primary center">Our Vendors</h1>
+            <div id="clients"></div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="vendor">
+
+        
+        <ul >
+            <% for(let i of contact_List){ %>
+                <li class="contact-card">
+                    <p>Name: <%= i.name%></p>
+                    <p>Phone: <%= i.phone%></p>
+                    <p>Occupation:<%= i.skill%></p>
+                    <p>Pincode of area served:<%= i.pin%></p>
+                    <a href="/delete-vendor?id=<%=i._id%>" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></a>
+                </li>
+                <% } %>
+                
+            </ul>
+    </section>
+<script src="/js/home.js"></script>
+
+</body>
+</html>
