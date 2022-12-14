@@ -1,6 +1,6 @@
 console.log('homeHs is linked ');
 function findFunction() {
-    alert("Sorry!This functionality is currently not added");
+    alert("This functionality will be added soon");
   }
 
   function dltFunction() {

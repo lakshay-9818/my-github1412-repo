@@ -47,3 +47,4 @@ module.exports.deleteV = function(req,res){
 
 module.exports.signin= function(req,res){ return res.render('sign-in-page');}
 module.exports.signup= function(req,res){ return res.render('sign-up-page');}
+
