@@ -1,10 +1,16 @@
 const User= require('../models/user');
 
 module.exports.signU = function(req,res){
+    if(req.isAuthenticated())return res.redirect('/users/profile');
     return res.render('sign-up-page');
 }
 module.exports.signI = function(req,res){
+    if(req.isAuthenticated())return res.redirect('/users/profile');
     return res.render('sign-in-page');
+}
+
+module.exports.profile = function(req, res){
+    return res.render('user-profilePage');    
 }
 
 module.exports.create = function(req,res){
@@ -34,32 +40,24 @@ module.exports.create = function(req,res){
 
 module.exports.createSession=function(req,res){
 
-    //find user
-    User.findOne({email:req.body.email},function(err,user){
-        
-        if(err){console.log('error in signing up'); return;}
-        //if user found
-        if(user){
-            if(user.password!=req.body.password){
-                console.log('password not matched');
-                return res.redirect('back');}
-            //handle session creation
-            res.cookie('user_id',user.id);//imp
-            return res.redirect('/users/profile');
-        }
-        //if user not found
-        else{console.log('user is not found');  return res.redirect('back');}
-    })
+    return res.redirect('/');
 }
 
-module.exports.profile= function(req,res){
-    console.log(req.cookies);
-    if(req.cookies.user_id){
-        User.findById(req.cookies.user_id,function(err,user){
-            if(err){console.log('error in something'); return;}
-            if(user){return res.render('user-profilePage',{user:user});}
-        }
-        );
-    }
-    else {return res.redirect('/users/sign_in');}
-}
+module.exports.destroySession =function(req, res, next) {
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
+  }
+
+// module.exports.profile= function(req,res){
+//     console.log(req.cookies);
+//     if(req.cookies.user_id){
+//         User.findById(req.cookies.user_id,function(err,user){
+//             if(err){console.log('error in something'); return;}
+//             if(user){return res.render('user-profilePage',{user:user});}
+//         }
+//         );
+//     }
+//     else {return res.redirect('/users/sign_in');}
+// }

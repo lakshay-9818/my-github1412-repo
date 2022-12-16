@@ -39,11 +39,6 @@ module.exports.deleteV = function(req,res){
     return res.redirect('back');
    }
 
-// module.exports.tackle= function(req,res){
-//     let id = req.query.id;
-//     if(id=='sign-in')return res.render('sign-in-page');
-//     else return res.render('sign-up-page');
-// }
 
 module.exports.signin= function(req,res){ return res.render('sign-in-page');}
 module.exports.signup= function(req,res){ return res.render('sign-up-page');}
