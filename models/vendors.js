@@ -3,6 +3,7 @@ const mongoose= require('mongoose');
 const vendorSchema= new mongoose.Schema({
 name:{ type:String, required:true },
 phone:{type: Number, required:true},
+cardNo:{type: Number, required:true},
 pin:{ type: Number, required: true},
 skill:{type:String, required:true}
 }
