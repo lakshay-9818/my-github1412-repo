@@ -32,9 +32,9 @@ module.exports.createVendor = function(req,res)
                     //citizenship is present in citizenDB so create a vendor
                     Vendor.create(
     
-                        {name: req.body.name, phone: req.body.phone , pin: req.body.pin 
-                            , skill: req.body.skill, cardNo: req.body.cardNo}
-                        
+                        // {name: req.body.name, phone: req.body.phone , pin: req.body.pin 
+                        //     , skill: req.body.skill, cardNo: req.body.cardNo}
+                        req.body
                         , function(err, newVendor){
                         if(err){console.log('error in creating new entry'); return;}
                         console.log('******',newVendor);
@@ -62,11 +62,7 @@ module.exports.deleteV = function(req,res){
     return res.redirect('back');
    }
 
-// module.exports.tackle= function(req,res){
-//     let id = req.query.id;
-//     if(id=='sign-in')return res.render('sign-in-page');
-//     else return res.render('sign-up-page');
-// }
+
 
 module.exports.signin= function(req,res){ return res.render('sign-in-page');}
 module.exports.signup= function(req,res){ return res.render('sign-up-page');}
