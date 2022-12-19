@@ -6,111 +6,350 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ServiceHub</title>
     <link rel="icon" type="image/x-icon" href="/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    
 
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/02f87c0745.js" crossorigin="anonymous"></script>
+    <!-- linking bootstrap css files-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="/css/styling.css">
+    
 </head>
+
 <body>
 
     <header>
-        <nav id="navbar">
-    
-            <div id="logo"><img src="images/logoG.png" alt="Logo">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="/images/logoG.png" alt="" height="34px"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Blogs</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Others
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/newRegistrationPage">Register as professional</a></li>
+                      <li><a class="dropdown-item" href="#">Advertise with us</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Help Center</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <% if(logged_In){ %>                      
+                      <a class="nav-link" href="/users/profile" tabindex="-1" aria-disabled="true">Profile</a>
+                      <% }  %>
+                    
+                      <% if(!logged_In) { %>
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Profile</a>
+                        <% }  %>  
+
+                  </li>
+                </ul>
+
+                <logon class="d-flex">   
+
+                  <% if(logged_In){ %>                      
+                    
+                    <i class="bi bi-box-arrow-left" 
+                    style="color: #ffffff;
+                    font-size: 25px;"></i>               
+                  <a href="/users/logout" class="btn btn-outline-danger mx-2">Log Out</a>                  
+                    <% }  %>
+                  
+                    <% if(!logged_In) { %>
+                      
+                      <i class="bi bi-box-arrow-in-right" 
+                      style="color: #ffffff;
+                      font-size: 25px;"></i>               
+                    <a href="/users/sign_in" class="btn btn-outline-success mx-2">Log In</a>
+                    <a href="/users/sign_up" class="btn btn-outline-light">Sign Up</a>
+                      <% }  %> 
+
+
+                </logon>
+
+              </div>
             </div>
-    
-            <ul>
-                <li class="item"><a href="#">Home</a></li>
-                <li class="item"><a href="#">Survey Reports</a></li>
-                <li class="item"><a href="#">Blog</a></li>
-                <li class="item"><a href="/newRegistrationPage">Register as Professional</a></li> 
-            </ul>
-    
-            <div id="signIN">
-                <i class="fa-solid fa-right-to-bracket"></i>
-                
-                 <a href="/users/sign_up"><button> Sign Up</button> </a>
-                 <a href="/users/sign_in"><button>Log In</button></a>
-            
-            </div>
-    
-            <!-- <div id="connectWU">
-                <a href="https://www.instagram.com/?hl=en" target="_blank"><img src="instagram-logo.png" alt="Instagram"></a>
-                <a href="https://www.facebook.com/" target="-blank"><img src="facebook-logo.png" alt="Facebook"></a>
-                <a href="https://twitter.com/login" target="-blank"><img src="logo-twitter-png-5860.png" alt="Twitter"></a>
-                <a href="https://www.youtube.com/" target="-blank"><img src="youtube-logo.png" alt="Youtube"></a>
-            </div> -->
-        </nav>
+          </nav>
+
     </header>
-        <section id="Home">
-            <h1 id="h-primary">Welcome to Our Website!</h1>
-
-            <p class="p1">`Our motto is to bridge the gap between the service seekers and service providers`</p>   
-
-             <form action="" id="find">         
-            <input type="text" name="search" id="search" placeholder='search service'>
-            <input type="number" name="pinSelect" id="pinSelect" placeholder="enter pincode">
-            <button onclick="findFunction()"class="btn" ><i class="fa-solid fa-magnifying-glass" ></i></button>
-            </form> 
-        </section>
     
-        <section id="services-Container">
-            <h1 class="h-primary center">Our Services</h1>
-    
-            <div id="services">
-            <div class="service" id="card1">
-                <img src="/images/electrician2.png" alt="pizza png PNG">
-               <h2 class="h-secondary center"> Electrician</h2>           
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tempora voluptatem aspernatur incidunt voluptatibus quisquam!</p>
-            </div>
-            <div class="service" id="card2">
-                <img src="images/plumb.png" alt="pizza png PNG">
-                <h2 class="h-secondary center">Plumbing</h2>            
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tempora voluptatem aspernatur incidunt voluptatibus quisquam!</p>
-            </div>
-            <div class="service" id="card3">
-                <img src="images/painting.png" alt="pizza png PNG">
-                <h2 class="h-secondary center">Painting</h2>            
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum tempora voluptatem aspernatur incidunt voluptatibus quisquam!</p>
-    
-               
-            </div>
-        </div>
-        </section>
-        <section id="client-section">
-            <h1 class="h-primary center">Our Vendors</h1>
-            <div id="clients"></div>
-        </section>
+    <section id="Home">
+        <h1 id="h-primary">Welcome!
+          
+          <% if(logged_In){ %>
+            <%=user.name%>
+            <% }  %>
+          
+            <% if(!logged_In){ %>
+              
+              to Our Website
+              <% }  %>
+        
+        </h1>
 
+        <p class="p1">`Motto is to bridge the gap between the service seekers and service providers`</p>   
 
+        <form action="/search-reqq"id="find"  method="get">         
+        <div class="input-group">            
 
+            <select type="text" class="form-control " name="skillReqq" id="skillReqq" placeholder='search service' required>
+                <option value="" selected>---Select profession---</option>
+                <option value="mason">Mason</option>
+                <option value="carpenter">Carpenter</option>
+                <option value="electrician"> Electrician</option>
+                <option value="plumber">Plumber</option>
+                <option value="painter">Painter</option>
+            </select>
 
-
-
-
-
-
-
-
-    <section class="vendor">
+            <i class="bi bi-geo-alt-fill input-group-text"></i>
+            <input type="number" name="pinReqq" id="pinReqq" placeholder="enter pincode" class="form-control" required>
+            <button onclick=""class="btn btn-secondary" ><i class="bi bi-search" ></i></button>
+            
+          </div>
+        </form> 
 
         
-        <ul >
+    </section>
+
+    <!-- carousel -->
+    <section id="mid" class="m-5 d-flex flex-row justify-content-center">
+
+      <div id="cL" class="p-1 m-2 w-50 d-inline-block">
+
+        
+        
+        <div class="d-flex flex-column align-items-start">
+          <h2 class="m-3 align-self-center"> Why Service Hub?</h2>
+
+
+
+            <div class="p-1 m-1 d-flex">
+
+              <div class="ek col-md-2">
+                <img src="/images/cost-effi.jpeg" alt="image">
+              </div>
+              <div class="do ">
+
+                <h4>Cost-effective</h4>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, itaque?</h5>
+              </div>
+            </div>
+            <div class="p-1 m-1 d-flex">
+              <div class="ek col-md-2">
+                <img src="/images/fast.jpeg" alt="image">
+              </div>
+              <div class="do ">
+
+                <h4>Fast Services</h4>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, et.</h5>
+              </div> 
+            </div>
+            <div class="p-1 m-1 d-flex">
+              <div class="ek col-md-2">
+                <img src="/images/quality.jpeg" alt="image">
+              </div>
+              <div class="do">
+
+                <h4>Quality Assured</h4>
+                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, et.</h5>
+              </div> 
+            </div>
+
+        </div> 
+      </div>
+        <div id="cR" class="p-2 m-2 w-50 d-inline-block align-items-center">
+            
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+             <div class="carousel-inner">
+               <div class="carousel-item active">
+                 <img src="/images/coseffi.png" class="d-block w-100" alt="...">
+               </div>
+               <div class="carousel-item">
+                 <img src="/images/bg18.png" class="d-block w-100" alt="...">
+               </div>
+               <div class="carousel-item">
+                 <img src="/images/bg.png" class="d-block w-100" alt="...">
+               </div>
+             </div>
+           </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="vendor bg-dark">
+      
+        
+        <ul class="list-group col-s-12 col-md-9 col-lg-6">
             <% for(let i of contact_List){ %>
-                <li class="contact-card">
-                    <p>Name: <%= i.name%></p>
+                <li class="contact-card list-group-item-dark m-2 p-2 border border-3 rounded-3 shadow">
+                  
+                  <h4><%= i.name%></h4>                   
                     <p>Phone: <%= i.phone%></p>
                     <p>Occupation:<%= i.skill%></p>
                     <p>Pincode of area served:<%= i.pin%></p>
-                    <a href="/delete-vendor?id=<%=i._id%>" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></a>
+                    <a href="/users/addToFav?id=<%=i._id%>"><i class="bi bi-heart"></i> </a>
+                    <!-- <a href="/delete-vendor?id=<%=i._id%>" onclick="return confirm('Are you sure?')"><i class="bi bi-trash-fill"></i></a> -->
                 </li>
                 <% } %>
                 
             </ul>
+          
     </section>
+
+<!-- Footer -->
+<footer
+class="text-center text-lg-start text-white"           
+>
+<!-- Grid container -->
+<div class="container p-4 pb-0">
+<!-- Section: Links -->
+<section class="">
+<!--Grid row-->
+<div class="row">
+<!-- Grid column -->
+<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+  <h6 class="text-uppercase mb-4 font-weight-bold">
+    Service Hub
+  </h6>
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. In nobis assumenda quos, et reiciendis at quod eum laborum dolorum explicabo!
+  </p>
+</div>
+<!-- Grid column -->
+
+<hr class="w-100 clearfix d-md-none" />
+
+<!-- Grid column -->
+<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+  <h6 class="text-uppercase mb-4 font-weight-bold">About</h6>
+  <p>
+    <a class="text-white">Our Vision</a>
+  </p>
+  <p>
+    <a class="text-white">About Authors</a>
+  </p>
+  <p>
+    <a class="text-white">Training Programs</a>
+  </p>
+  <p>
+    <a class="text-white">Survey Reports</a>
+  </p>
+</div>
+<!-- Grid column -->
+
+<hr class="w-100 clearfix d-md-none" />
+
+<!-- Grid column -->
+<hr class="w-100 clearfix d-md-none" />
+
+<!-- Grid column -->
+<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+  <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
+  <p><i class="bi bi-house-door mr-3"></i> New York, NY 10012, US</p>
+  <p><i class="bi bi-envelope-at mr-3"></i> info@gmail.com</p>
+  <p><i class="bi bi-phone mr-3"></i> + 01 234 567 88</p>
+  <p><i class="bi bi-printer mr-3"></i> + 01 234 567 89</p>
+</div>
+<!-- Grid column -->
+
+<!-- Grid column -->
+<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+  <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+  <!-- Facebook -->
+  <a
+     class="btn btn-primary btn-floating m-1"
+     style="background-color: #3b5998;border-radius: 50%;"
+     href="#!"
+     role="button"
+     ><i class="bi bi-facebook"></i
+    ></a>
+
+  <!-- Twitter -->
+  <a
+     class="btn btn-primary btn-floating m-1"
+     style="background-color: #55acee; border-radius: 50%;"
+     href="#!"
+     role="button"
+     ><i class="bi bi-twitter"></i
+    ></a>
+
+  <!-- Google -->
+  <a
+     class="btn btn-primary btn-floating m-1"
+     style="background-color: #dd4b39; border-radius: 50%;"
+     href="#!"
+     role="button"
+     ><i class="bi bi-google"></i
+    ></a>
+
+  <!-- Instagram -->
+  <a
+     class="btn btn-primary btn-floating m-1"
+     style="background-color: #ac2bac; border-radius: 50%;"
+     href="#!"
+     role="button"
+     ><i class="bi bi-instagram"></i
+    ></a>
+
+  <!-- Linkedin -->
+  <a
+     class="btn btn-primary btn-floating m-1"
+     style="background-color: #0082ca; border-radius: 50%;"
+     href="#!"
+     role="button"
+     ><i class="bi bi-linkedin"></i
+    ></a>
+  <!-- Github -->
+  <a
+     class="btn btn-primary btn-floating m-1"
+     style="background-color: #333333; border-radius: 50%;"
+     href="#!"
+     role="button"
+     ><i class="bi bi-github"></i
+    ></a>
+</div>
+</div>
+<!--Grid row-->
+</section>
+<!-- Section: Links -->
+</div>
+<!-- Grid container -->
+
+<!-- Copyright -->
+<div
+class="text-center p-3"
+style="background-color: rgba(0, 0, 0, 0.2)"
+>
+© 2022 Copyright:
+<a class="text-white" href="https://mdbootstrap.com/"
+>ServiceHub.Ltd.co</a
+>
+</div>
+<!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
+
+<!-- including bootstarps js files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <script src="/js/home.js"></script>
 
 </body>

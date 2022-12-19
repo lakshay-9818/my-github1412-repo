@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const Vendor= require('../models/vendors');
+
 const userSchema= new mongoose.Schema({
     email:{
         type: String,
@@ -13,7 +15,8 @@ const userSchema= new mongoose.Schema({
     name:{
         type: String,
         required:true
-    }
+    },
+    favs:{type:[String] }
 },
     {
         timestamps: true

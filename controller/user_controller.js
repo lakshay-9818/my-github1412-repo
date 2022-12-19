@@ -1,4 +1,5 @@
 const User= require('../models/user');
+const Vendor = require('../models/vendors');
 
 module.exports.signU = function(req,res){
     if(req.isAuthenticated())return res.redirect('/users/profile');
@@ -12,6 +13,16 @@ module.exports.signI = function(req,res){
 module.exports.profile = function(req, res){
     return res.render('user-profilePage');    
 }
+
+module.exports.addFav = function(req, res){
+     var id = req.query._id;
+     Vendor.findById(id, function(err,vendi){
+        if(err)console.log('error! vendor not added to favourites');
+        else user.favs.push('hiii'+id);
+     })
+    
+}
+
 
 module.exports.create = function(req,res){
     if(req.body.password!=req.body.confirm_password){
@@ -40,7 +51,7 @@ module.exports.create = function(req,res){
 
 module.exports.createSession=function(req,res){
 
-    return res.redirect('/');
+    res.redirect('/');
 }
 
 module.exports.destroySession =function(req, res, next) {

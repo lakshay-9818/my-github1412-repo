@@ -1,4 +1,4 @@
-console.log('homeHs is linked ');
+console.log('homeJs is linked ');
 function findFunction() {
     alert("This functionality will be added soon");
   }

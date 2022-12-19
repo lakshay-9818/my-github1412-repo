@@ -10,7 +10,17 @@
     </h1>
     
     Name: <%=user.name%>
+    <br>
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
+    <br>
     email: <%=user.email%>
     <br>
     <a href="/users/logout"> logout</a>
+    <hr>
+
+    <% for(let o of user.favs){ %>
+
+        <h4><%= o %></h4>
+        <% } %>
+
 </body>
