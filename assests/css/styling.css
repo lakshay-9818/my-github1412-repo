@@ -64,8 +64,8 @@ h5{
 
 
 .vendor {
-    height: 60vh;
-    overflow-y:scroll;
+    height: 50vh;
+    
 }
 
 /* width */
@@ -90,9 +90,9 @@ h5{
   ::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3; 
   }
-  .vendor ul{
+  /* .vendor ul{
     margin: auto;
     list-style: none;
-  }
+  } */
 
     

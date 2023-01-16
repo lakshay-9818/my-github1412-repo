@@ -6,6 +6,9 @@ phone:{type: Number, required:true},
 pin:{ type: Number, required: true},
 cardNo:{type: Number, required:true},
 skill:{type:String, required:true}
+},
+{
+    timestamps: true
 }
 );
 

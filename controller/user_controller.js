@@ -14,13 +14,15 @@ module.exports.profile = function(req, res){
     return res.render('user-profilePage');    
 }
 
-module.exports.addFav = function(req, res){
-     var id = req.query._id;
+module.exports.addFav = function(req, res){  
+    if(!req.isAuthenticated)return res.redirect('back');
+    var id = req.query.id;  
      Vendor.findById(id, function(err,vendi){
         if(err)console.log('error! vendor not added to favourites');
-        else user.favs.push('hiii'+id);
-     })
-    
+        else req.user.favs.push(' '+vendi.name);
+        console.log('added vendor:'+vendi.name+ ' to user: '+req.user.name+  ' ' +req.user.favs);
+     });
+    return res.redirect('back');
 }
 
 
