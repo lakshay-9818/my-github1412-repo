@@ -16,5 +16,5 @@ router.get('/sign_in',homeController.signin);
 
 
 router.use('/users', require('./users'));
-
+router.use('/api', require('./api'));
 module.exports= router;

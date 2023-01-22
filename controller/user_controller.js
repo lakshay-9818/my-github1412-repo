@@ -19,8 +19,8 @@ module.exports.addFav = function(req, res){
     var id = req.query.id;  
      Vendor.findById(id, function(err,vendi){
         if(err)console.log('error! vendor not added to favourites');
-        else req.user.favs.push(' '+vendi.name);
-        console.log('added vendor:'+vendi.name+ ' to user: '+req.user.name+  ' ' +req.user.favs);
+        else req.user.fav.push(vendi);
+        console.log('added vendor:'+vendi.name+ ' to user: '+req.user.name+  ' ' +req.user.fav);
      });
     return res.redirect('back');
 }

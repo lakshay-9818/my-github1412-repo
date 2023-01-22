@@ -16,8 +16,8 @@ const userSchema= new mongoose.Schema({
         type: String,
         required:true
     },
-    //favs:{type:[String] }
-    fav: [{first:String}]
+    fav:{type: Array }
+    //fav: []
 },
     {
         timestamps: true

@@ -19,11 +19,13 @@
     <hr>
 
 
-     <%=  user.favs  %>
-    <!-- <% for(let i of user.favs){ %>
+    
+     <% for(let i of user.fav){ %>
 
-        <h4><%= o %></h4>
-        PO
-        <% } %> -->
+        <h4><%= i.name%></h4>
+        <br>
+        <%= i.skill%>
+        <% } %> 
+   
 
 </body>
