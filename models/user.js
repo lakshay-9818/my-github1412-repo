@@ -16,8 +16,8 @@ const userSchema= new mongoose.Schema({
         type: String,
         required:true
     },
-    fav:{type: Array }
-    //fav: []
+    
+    favVendors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vendor' }]
 },
     {
         timestamps: true

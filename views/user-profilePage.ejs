@@ -1,12 +1,12 @@
 <head>
     <title>ServiceHub | Profile</title>
     <link rel="icon" type="image/x-icon" href="/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg">
-    </head>
+</head>
 
 <body>
     
-    <h1>this is profile page <br>
-        welcome!
+    <h1>This is profile page
+        
     </h1>
     
     Name: <%=user.name%>
@@ -18,14 +18,16 @@
     <a href="/users/logout"> logout</a>
     <hr>
 
-
+<h2>list of your favourites vendors</h2>
     
-     <% for(let i of user.fav){ %>
-
-        <h4><%= i.name%></h4>
-        <br>
-        <%= i.skill%>
-        <% } %> 
-   
+     <ul>
+    <% for(let i of Vendor){ %>
+        <li>
+        <h4> <%= i.name%> </h4>
+        <%= i.skill %>
+        <br>       
+    </li>
+         <% } %>
+        </ul>
 
 </body>

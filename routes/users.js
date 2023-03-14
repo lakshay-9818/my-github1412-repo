@@ -20,7 +20,7 @@ router.post('/create-session',
 router.get('/logout',usersController.destroySession);
 
 
-router.get('/addToFav',usersController.addFav);
+router.get('/addToFav',passport.checkAuthentication,usersController.addFav);
 
 
 module.exports = router;

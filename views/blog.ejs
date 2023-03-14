@@ -1,0 +1,29 @@
+<head>
+    <title>this is blog</title>
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+    
+    <h1>Users' review page 
+    </h1>
+    <section id=" post-feed">
+        <h2>Share your Experience with ServiceHub</h2>
+        <% if(locals.user){ %>
+            <form action="/blogs/write" id="new-post" method="post">
+                <textarea name="content" cols="30" rows="4" placeholder="write something"></textarea>
+                <input type="submit" value="post">
+                <% } %>
+            </form>
+            <ul id="post-list">
+            <% for(let i of bloGs){ %>
+                <li id="post-<%=i._id %>"> <%= i.content %>
+                    <br> <%= i.user.name  %> 
+                </li>
+                <% } %>
+            </ul>
+            </section>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>     
+            <script src="/js/home_post.js"></script> 
+        </body>
+
+

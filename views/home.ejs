@@ -32,7 +32,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Blogs</a>
+                    <a class="nav-link" href="/blogs/blogPage">Tell your Story</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,6 +41,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="/newRegistrationPage">Register as professional</a></li>
                       <li><a class="dropdown-item" href="#">Advertise with us</a></li>
+                      <li><a class="dropdown-item" href="/posts/Codopage">post something</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="#">Help Center</a></li>
                     </ul>
@@ -212,6 +213,7 @@
           -->
 
     <!-- </section> -->
+    
     <section class="bg-dark d-flex vendor" style="overflow-x: scroll">
       <!-- <ul> -->
       
@@ -227,7 +229,23 @@
       <div id="" class="w-100 p-1 m-1 d-flex justify-content-center" style="color: gray;font-size: large;">
           <div class="s1 p-1">pincode:<%=i.pin%> |</div>
           <div class="s2 p-1"><%= i.phone%> |</div>
-          <div class="s3 p-1 justify-self-end"><a href="/users/addToFav?id=<%=i._id%>"><i class="bi bi-heart"></i> </a></div>
+          <div id="favHeart" class="s3 p-1 justify-self-end">
+            <% 
+            
+            if(logged_In){ %>
+            
+              <% if(locals.user.favVendors.includes(i._id)){ %>
+                <a href="/users/addToFav?id=<%=i._id%>"><i class="bi bi-heart-fill"></i> </a>
+              <% } else { %>              
+                <a href="/users/addToFav?id=<%=i._id%>"><i class="bi bi-heart"></i> </a>
+            <%  }  %>
+
+
+          <% } %>
+                
+            
+            
+          </div>
       </div>
       
     </div>
@@ -362,9 +380,8 @@ class="text-center p-3"
 style="background-color: rgba(0, 0, 0, 0.2)"
 >
 © 2022 Copyright:
-<a class="text-white" href="https://mdbootstrap.com/"
->ServiceHub.Ltd.co</a
->
+<a class="text-white" href="https://mdbootstrap.com/">
+  ServiceHub.Ltd.co</a>
 </div>
 <!-- Copyright -->
 </footer>
@@ -376,6 +393,7 @@ style="background-color: rgba(0, 0, 0, 0.2)"
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <script src="/js/home.js"></script>
+<script src="/js/home_post.js"></script> 
 
 </body>
 </html>

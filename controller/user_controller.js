@@ -11,17 +11,37 @@ module.exports.signI = function(req,res){
 }
 
 module.exports.profile = function(req, res){
-    return res.render('user-profilePage');    
-}
+    
+    let user= User.findById(req.user._id)
+    user.populate('favVendors')
+    .exec(function(err,user){
+        console.log(user);   
+        
+        return res.render('user-profilePage',{
+            Vendor:user.favVendors
+        });  
+       })
+    
+    
+    };        
 
-module.exports.addFav = function(req, res){  
-    if(!req.isAuthenticated)return res.redirect('back');
+
+module.exports.addFav = function(req, res){      
     var id = req.query.id;  
-     Vendor.findById(id, function(err,vendi){
-        if(err)console.log('error! vendor not added to favourites');
-        else req.user.fav.push(vendi);
-        console.log('added vendor:'+vendi.name+ ' to user: '+req.user.name+  ' ' +req.user.fav);
-     });
+    console.log('user is '+ req.user);
+    console.log('vendor is '+ id);
+    req.user.favVendors.push(id);
+    User.findById(req.user._id, function(err,user){
+     console.log(user);   
+        user.favVendors.push(id);
+        user.save();
+    });
+    console.log('vendor added to user is'+ req.user.favVendors);
+    //  Vendor.findById(id, function(err,vendi){
+    //     if(err)console.log('error! vendor not added to favourites');
+    //     else req.user.favVendor= vendi;
+    //     //console.log('added vendor:'+vendi.name+ ' to user: '+req.user.name+  ' ' +req.user.fav);
+    //  });
     return res.redirect('back');
 }
 
@@ -52,13 +72,14 @@ module.exports.create = function(req,res){
 
 
 module.exports.createSession=function(req,res){
-
+    req.flash('success','Signed in successfully');
     res.redirect('/');
 }
 
 module.exports.destroySession =function(req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
+      req.flash('success','You have logged out');
       res.redirect('/');
     });
   }

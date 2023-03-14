@@ -22,8 +22,10 @@ function findFunction() {
     
   //);
   //});
-  $(".s3").click(
-    function(){$(this).html('<a href=""><i class="bi bi-heart-fill"></i> </a>');},
-    //function(){$(".s3").css({"color": "blue"});},
-    //function(){$(".s3").css({"color": "green"});}
-  );
+  
+  // $(".s3").click(
+  //   function(){$(this).html('<a href=""><i class="bi bi-heart-fill"></i> </a>');},
+    
+  // );
+
+  
