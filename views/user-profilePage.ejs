@@ -1,33 +1,192 @@
 <head>
-    <title>ServiceHub | Profile</title>
+    
     <link rel="icon" type="image/x-icon" href="/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg">
+
+<link rel="stylesheet" href="/css/profile.css">
 </head>
 
 <body>
     
-    <h1>This is profile page
-        
-    </h1>
-    
-    Name: <%=user.name%>
-    <br>
-    <a class="nav-link active" aria-current="page" href="/">Home</a>
-    <br>
-    email: <%=user.email %>
-    <br>
-    <a href="/users/logout"> logout</a>
-    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                   <div class="profile-card-4 z-depth-3">
+                    <div class="card">
+                      <div class="card-body text-center bg-primary rounded-top">
+                       <div class="user-box">
+                        
+<% let imgLink;
+if(user.avatar)imgLink= user.avatar;
+else {
+    if(user.gender=="Female") imgLink= "https://bootdey.com/img/Content/avatar/avatar3.png";
+    else imgLink= "https://bootdey.com/img/Content/avatar/avatar7.png";
+} %>
 
-<h2>list of your favourites vendors</h2>
+                        <img src=<%= imgLink%> alt="user avatar" height=85px>
+                      </div>
+                      <h5 class="mb-1 text-white"> <%=user.name%></h5>
+                      
+                     </div>
+                      <div class="card-body">
+                        <ul class="list-group shadow-none">
+                        <li class="list-group-item">
+                          <div class="list-icon">
+                            <i class="bi bi-phone"></i>
+                          </div>
+                          <div class="list-details">
+                            <span><%= user.phoneNo %></span>
+                            <small>Mobile Number</small>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="list-icon">
+                            <i class="bi bi-envelope"></i>
+                          </div>
+                          <div class="list-details">
+                            <span><%= user.email %></span>
+                            <small>Email Address</small>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="list-icon">
+                            <i class="bi bi-calendar-date"></i>
+                          </div>
+                          <div class="list-details">
+                            <span><%= user.createdAt %></span>
+                            <small>Profile created at</small>
+                          </div>
+                        </li>
+                        </ul>
+                        
+                       </div>
+                       
+                     </div>
+                   </div>
+            </div>
+            <div class="col-lg-8" >
+                <div class="card z-depth-3">
+                    <div class="card-body" style=" height: 65vh; overflow: scroll;">
+                    <ul class="nav nav-pills nav-pills-primary nav-justified">
+                        <li class="nav-item">
+                            <button class="nav-link active" id ="a1"><i class="bi bi-heart-half"></i> <span class="hidden-xs">Favourite vendors</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void();" class="nav-link" id="a2"><i class="bi bi-clock-history"></i> <span class="hidden-xs">Previous bookings</span></a>
+                        </li>
+                        <li class="nav-item" >
+                            <button class="nav-link" id="a3"><i class="bi bi-pencil-square"></i> <span class="hidden-xs">Edit Profile</span></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-3" id="tab-ContenT" >
+                        
+                        <div class="tab-pane active " id="profile">
+                            
     
-     <ul>
-    <% for(let i of Vendor){ %>
-        <li>
-        <h4> <%= i.name%> </h4>
-        <%= i.skill %>
-        <br>       
-    </li>
-         <% } %>
-        </ul>
+                            <ul class="list-group col-s-12 col-md-9 col-lg-6 "  style="list-style:none">
+                                <% for(let i of Vendor){ %>
+                                    <li class="contact-card list-group-item-info m-2 p-2 border border-10 rounded-3 shadow">
+                                      
+                                      <h4><%= i.name%></h4>                   
+                                        <p><strong> Phone:&nbsp </strong><%= i.phone%></p>
+                                        <p><strong>Occupation:&nbsp</strong><%= i.skill%></p>
+                                        <p><strong>Pincode of area served:&nbsp</strong><%= i.pin%></p>
+                                        
+                                         
+                                     </li>
+                                    <% } %>
+                                    
+                                </ul> 
+                                            </div>
 
+                        <div class="tab-pane " id="edit">
+
+                            <!-- <form action="/users/update" enctype="multipart/form-data" method="post">
+                                <input type="file" name="avatar" placeholder="profile picture">
+                                
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="reset" class="btn btn-secondary" value="Cancel">
+                                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                                    </div>
+                                </div>
+                            </form> -->
+
+                            <form action="/users/update" enctype="multipart/form-data" method="post">
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label">Name</label>
+                                                                <div class="col-lg-9">
+                                                                    <input class="form-control" type="text" value="<%=user.name%>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label">Phone no.</label>
+                                                                <div class="col-lg-9">
+                                                                    <input class="form-control" type="tel" value="<%=user.phoneNo%>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                                                <div class="col-lg-9">
+                                                                    <input class="form-control" type="email" value="<%=user.email%>" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label">Change profile</label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="file" name="avatar" placeholder="profile picture">
+                                                                </div>
+                                                            </div>
+                                                           
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                                                                <div class="col-lg-9">
+                                                                    <input class="form-control" type="text" value="" placeholder="Street">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                                                <div class="col-lg-6">
+                                                                    <input class="form-control" type="text" value="" placeholder="City">
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <input class="form-control" type="text" value="" placeholder="State">
+                                                                </div>
+                                                            </div>
+                                                           
+                                                            
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label">Change Password</label>
+                                                                <div class="col-lg-9">
+                                                                    <input class="form-control" type="password" value="11111122333">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                                                                <div class="col-lg-9">
+                                                                    <input class="form-control" type="password" value="11111122333">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                                                <div class="col-lg-9">
+                                                                    <input type="reset" class="btn btn-secondary" value="Cancel">
+                                                                    <input type="submit" class="btn btn-primary" value="Save Changes">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                        </div>
+                        
+                            
+                    </div>
+                    </div>
+                </div>
+            </div>
+              
+                
+        </div>
+    </div>
+
+    <script src="/js/U-profile.js"></script> 
 </body>
+

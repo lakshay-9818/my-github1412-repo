@@ -1,5 +1,5 @@
 
-
+const Post =require('../../models/posts');
 {   
     //method to submit data for new post using ajax
     console.log('script loaded');
@@ -23,9 +23,12 @@
    } 
    //method to create new post
    let newPostDom = (post)=>{
+    let posT = Post.findById(post._id).populate('user');
     return $(`
     <li id="post-${post._id}"> ${post.content}
-                    <br> ${post.user.name } 
+
+      
+                    <br> ${posT.user } 
                 </li>
     `);
    }

@@ -13,7 +13,9 @@ router.get('/newRegistrationPage',homeController.newVpage);
 router.get('/search-reqq',homeController.vendorReqq);
 router.post('/create-contact',homeController.createVendor);
 router.get('/delete-vendor',homeController.deleteV);
-router.get('/sign_in',homeController.signin);
+//render sign up login page
+router.get('/sign_up', homeController.signU);
+router.get('/sign_in', homeController.signI);
 
 
 router.use('/users', require('./users'));

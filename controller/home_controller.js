@@ -9,14 +9,14 @@ module.exports.home = function(req, res){
 
         if(req.isAuthenticated())  {
            
-                return res.render('home',{            
+                return res.render('home',{  titl:`Home `,          
                     contact_List: vendors ,logged_In: true
                 } );
          
               }
 
         else  {
-               return res.render('home',{            
+               return res.render('home',{   titl:`Home`,         
             contact_List: vendors ,logged_In: false
         } );}
      });
@@ -24,10 +24,11 @@ module.exports.home = function(req, res){
 
 
 
-module.exports.newVpage= function(req,res){
+module.exports.newVpage= function(req,res){let loggin=false;
+    if(req.user)loggin= true;
     return res.render('V-Registration',
     {
-        title:`ServiceHub | Professional's Registration `
+        titl:`Professional's Registration `,logged_In: loggin
     });
 }
 
@@ -75,9 +76,6 @@ module.exports.deleteV = function(req,res){
    }
 
 
-module.exports.signin= function(req,res){ return res.render('sign-in-page');}
-module.exports.signup= function(req,res){ return res.render('sign-up-page');}
-
 module.exports.vendorReqq= function(req,res){
 
     console.log(req.query.pinReqq);
@@ -95,6 +93,15 @@ module.exports.vendorReqq= function(req,res){
             contact_List: vendors ,logged_In: false
         } );}
      });
+}
+
+module.exports.signU = function(req,res){
+    if(req.user)return res.redirect('/users/profile');
+    return res.render('sign-up-page',{titl:`SignUp`,logged_In:false});
+}
+module.exports.signI = function(req,res){
+    if(req.user)return res.redirect('/users/profile');
+    return res.render('sign-in-page',{titl:`LogIn `,logged_In:false});
 }
 
 

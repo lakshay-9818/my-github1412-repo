@@ -4,87 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ServiceHub</title>
-    <link rel="icon" type="image/x-icon" href="/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg">
+    
+    
     
 
     <!-- linking bootstrap css files-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-
+    
     <link rel="stylesheet" href="/css/styling.css">
     
 </head>
 
 <body>
 
-    <header>
-
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="/images/logoG.png" alt="" height="34px"></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/blogs/blogPage">Tell your Story</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Others
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="/newRegistrationPage">Register as professional</a></li>
-                      <li><a class="dropdown-item" href="#">Advertise with us</a></li>
-                      <li><a class="dropdown-item" href="/posts/Codopage">post something</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Help Center</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <% if(logged_In){ %>                      
-                      <a class="nav-link" href="/users/profile" tabindex="-1" aria-disabled="true">Profile</a>
-                      <% }  %>
-                    
-                      <% if(!logged_In) { %>
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Profile</a>
-                        <% }  %>  
-
-                  </li>
-                </ul>
-
-                <logon class="d-flex">   
-
-                  <% if(logged_In){ %>                      
-                    
-                    <i class="bi bi-box-arrow-left" 
-                    style="color: #ffffff;
-                    font-size: 25px;"></i>               
-                  <a href="/users/logout" class="btn btn-outline-danger mx-2">Log Out</a>                  
-                    <% }  %>
-                  
-                    <% if(!logged_In) { %>
-                      
-                      <i class="bi bi-box-arrow-in-right" 
-                      style="color: #ffffff;
-                      font-size: 25px;"></i>               
-                    <a href="/users/sign_in" class="btn btn-outline-success mx-2">Log In</a>
-                    <a href="/users/sign_up" class="btn btn-outline-light">Sign Up</a>
-                      <% }  %> 
-
-
-                </logon>
-
-              </div>
-            </div>
-          </nav>
-
-    </header>
     
     <section id="Home">
         <h1 id="h-primary">Welcome!
@@ -235,7 +166,7 @@
             if(logged_In){ %>
             
               <% if(locals.user.favVendors.includes(i._id)){ %>
-                <a href="/users/addToFav?id=<%=i._id%>"><i class="bi bi-heart-fill"></i> </a>
+                <a href="/users/removeFav?id=<%=i._id%>"><i class="bi bi-heart-fill"></i> </a>
               <% } else { %>              
                 <a href="/users/addToFav?id=<%=i._id%>"><i class="bi bi-heart"></i> </a>
             <%  }  %>
@@ -254,143 +185,12 @@
   </section>
 
 
-<!-- Footer -->
-<footer
-class="text-center text-lg-start text-white"           
->
-<!-- Grid container -->
-<div class="container p-4 pb-0">
-<!-- Section: Links -->
-<section class="">
-<!--Grid row-->
-<div class="row">
-<!-- Grid column -->
-<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-  <h6 class="text-uppercase mb-4 font-weight-bold">
-    Service Hub
-  </h6>
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. In nobis assumenda quos, et reiciendis at quod eum laborum dolorum explicabo!
-  </p>
-</div>
-<!-- Grid column -->
 
-<hr class="w-100 clearfix d-md-none" />
-
-<!-- Grid column -->
-<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-  <h6 class="text-uppercase mb-4 font-weight-bold">About</h6>
-  <p>
-    <a class="text-white">Our Vision</a>
-  </p>
-  <p>
-    <a class="text-white">About Authors</a>
-  </p>
-  <p>
-    <a class="text-white">Training Programs</a>
-  </p>
-  <p>
-    <a class="text-white">Survey Reports</a>
-  </p>
-</div>
-<!-- Grid column -->
-
-<hr class="w-100 clearfix d-md-none" />
-
-<!-- Grid column -->
-<hr class="w-100 clearfix d-md-none" />
-
-<!-- Grid column -->
-<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-  <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
-  <p><i class="bi bi-house-door mr-3"></i> New York, NY 10012, US</p>
-  <p><i class="bi bi-envelope-at mr-3"></i> info@gmail.com</p>
-  <p><i class="bi bi-phone mr-3"></i> + 01 234 567 88</p>
-  <p><i class="bi bi-printer mr-3"></i> + 01 234 567 89</p>
-</div>
-<!-- Grid column -->
-
-<!-- Grid column -->
-<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-  <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
-
-  <!-- Facebook -->
-  <a
-     class="btn btn-primary btn-floating m-1"
-     style="background-color: #3b5998;border-radius: 50%;"
-     href="#!"
-     role="button"
-     ><i class="bi bi-facebook"></i
-    ></a>
-
-  <!-- Twitter -->
-  <a
-     class="btn btn-primary btn-floating m-1"
-     style="background-color: #55acee; border-radius: 50%;"
-     href="#!"
-     role="button"
-     ><i class="bi bi-twitter"></i
-    ></a>
-
-  <!-- Google -->
-  <a
-     class="btn btn-primary btn-floating m-1"
-     style="background-color: #dd4b39; border-radius: 50%;"
-     href="#!"
-     role="button"
-     ><i class="bi bi-google"></i
-    ></a>
-
-  <!-- Instagram -->
-  <a
-     class="btn btn-primary btn-floating m-1"
-     style="background-color: #ac2bac; border-radius: 50%;"
-     href="#!"
-     role="button"
-     ><i class="bi bi-instagram"></i
-    ></a>
-
-  <!-- Linkedin -->
-  <a
-     class="btn btn-primary btn-floating m-1"
-     style="background-color: #0082ca; border-radius: 50%;"
-     href="#!"
-     role="button"
-     ><i class="bi bi-linkedin"></i
-    ></a>
-  <!-- Github -->
-  <a
-     class="btn btn-primary btn-floating m-1"
-     style="background-color: #333333; border-radius: 50%;"
-     href="#!"
-     role="button"
-     ><i class="bi bi-github"></i
-    ></a>
-</div>
-</div>
-<!--Grid row-->
-</section>
-<!-- Section: Links -->
-</div>
-<!-- Grid container -->
-
-<!-- Copyright -->
-<div
-class="text-center p-3"
-style="background-color: rgba(0, 0, 0, 0.2)"
->
-© 2022 Copyright:
-<a class="text-white" href="https://mdbootstrap.com/">
-  ServiceHub.Ltd.co</a>
-</div>
-<!-- Copyright -->
-</footer>
-<!-- Footer -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- including bootstarps js files -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
 <script src="/js/home.js"></script>
 <script src="/js/home_post.js"></script> 

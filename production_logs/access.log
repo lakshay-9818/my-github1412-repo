@@ -1,0 +1,6 @@
+::1 - - [29/Mar/2023:17:04:14 +0000] "GET / HTTP/1.1" 200 26015 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [29/Mar/2023:17:04:17 +0000] "GET /users/logout HTTP/1.1" 302 46 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [29/Mar/2023:17:04:17 +0000] "GET / HTTP/1.1" 200 24681 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [29/Mar/2023:17:04:20 +0000] "GET /sign_in HTTP/1.1" 200 10308 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [29/Mar/2023:17:04:34 +0000] "POST /users/create-session HTTP/1.1" 302 46 "http://localhost:6565/sign_in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [29/Mar/2023:17:04:34 +0000] "GET / HTTP/1.1" 200 26233 "http://localhost:6565/sign_in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"

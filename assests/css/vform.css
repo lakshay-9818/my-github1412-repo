@@ -1,11 +1,11 @@
-body{margin: 13%;
+#vR{margin: 13%;
     margin-top: 3%;    
     }
    
    
 
- div.cover{ border:solid 0px;border-radius: 16px; overflow: hidden;}
-div.top{
+  #vR div.cover{ border:solid 0px;border-radius: 16px; overflow: hidden;}
+ #vR div.top{
     background-color: rgb(107, 172, 23);
     line-height: 5px;
     padding: 24px;
@@ -15,10 +15,10 @@ div.top{
     color: whitesmoke;
     
 }
-p,sup{color: red;
+#vR p,sup{color: red;
 font-size: x-small;
 }
-div.main{padding: 34px;padding-top: 0px; background-color: #f2f2f2;
+#vR div.main{padding: 34px;padding-top: 0px; background-color: #f2f2f2;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
 font-size: large;}
 

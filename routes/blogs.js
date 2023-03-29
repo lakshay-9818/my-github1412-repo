@@ -6,4 +6,5 @@ const blogController = require('../controller/blog_controller');
 
 router.post('/write',passport.checkAuthentication, blogController.write);
 router.get('/blogPage', blogController.blogVew);
+router.get('/deletePost',passport.checkAuthentication, blogController.deleteP);
 module.exports= router;

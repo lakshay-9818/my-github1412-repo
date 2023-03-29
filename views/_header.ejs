@@ -1,1 +1,66 @@
-hello jacob
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="/images/logoG.png" alt="" height="34px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Others
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/newRegistrationPage">Register as professional</a></li>
+                <li><a class="dropdown-item" href="#">Advertise with us</a></li>
+                <li>
+                  <a class="dropdown-item" href="/blogs/blogPage">Users Reviews/Blogs</a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Help Center</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <% if(logged_In){ %>                      
+                <a class="nav-link" href="/users/profile" tabindex="-1" aria-disabled="true">Profile</a>
+                <% }  %>
+              
+                <% if(!logged_In) { %>
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Profile</a>
+                  <% }  %>  
+
+            </li>
+          </ul>
+
+          <logon class="d-flex">   
+
+            <% if(logged_In){ %>                      
+              
+              <i class="bi bi-box-arrow-left" 
+              style="color: #ffffff;
+              font-size: 25px;"></i>               
+            <a href="/users/logout" class="btn btn-outline-danger mx-2">Log Out</a>                  
+              <% }  %>
+            
+              <% if(!logged_In) { %>
+                
+                <i class="bi bi-box-arrow-in-right" 
+                style="color: #ffffff;
+                font-size: 25px;"></i>               
+              <a href="/sign_in" class="btn btn-outline-success mx-2">Log In</a>
+              <a href="/sign_up" class="btn btn-outline-light">Sign Up</a>
+                <% }  %> 
+
+
+          </logon>
+
+        </div>
+      </div>
+    </nav>
+
+</header>

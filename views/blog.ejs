@@ -1,26 +1,35 @@
 <head>
-    <title>this is blog</title>
+   
     <link rel="stylesheet" href="/css/blog.css">
 </head>
 <body>
+    <section id="k1">
     
-    <h1>Users' review page 
+    <h1 style="text-align: center;">Users' review page 
     </h1>
     <section id=" post-feed">
-        <h2>Share your Experience with ServiceHub</h2>
+        <h4>Share your Experience with ServiceHub</h4>
         <% if(locals.user){ %>
             <form action="/blogs/write" id="new-post" method="post">
-                <textarea name="content" cols="30" rows="4" placeholder="write something"></textarea>
-                <input type="submit" value="post">
+                <textarea name="content" cols="30" rows="4" placeholder="Write Something......" class="border-3 rounded-3"></textarea>
+                <input type="submit" class="btn btn-primary" value="Post">
                 <% } %>
             </form>
-            <ul id="post-list">
+            
+            <ul id="post-list" class="list-group">
             <% for(let i of bloGs){ %>
-                <li id="post-<%=i._id %>"> <%= i.content %>
-                    <br> <%= i.user.name  %> 
+                <li id="post-<%=i._id %>" class="list-group-item list-group-item-action list-group-item-warning m-2">                 
+                    
+                    <strong><%= i.user.name  %><br></strong>  
+                    <%= i.createdAt %><br>
+                    "<em><%= i.content %></em>"
+                        <% if(locals.user && locals.user.id == i.user.id){ %>
+                    <br> <a href="/blogs/deletePost?id=<%=i._id%>"><i class="bi bi-trash-fill"></i></a>
+                    <% } %>
                 </li>
                 <% } %>
             </ul>
+            </section>
             </section>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>     
             <script src="/js/home_post.js"></script> 
