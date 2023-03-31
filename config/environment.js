@@ -14,7 +14,7 @@ const accessLogStream =rfs.createStream('access.log',{
 
 const development={
     name:'development',
-    asset_path: './assests',
+    asset_path: './assets',
     session_cookie_key: 'blahblahsometing',
     db: 'serviceHub_db',
     google_client_id: "733185169347-ng000866kbu0rj6ft5uq70p9ibuurr5f.apps.googleusercontent.com",
@@ -26,9 +26,11 @@ const development={
         options:{stream:accessLogStream}
     }
 }
+
+
 const production={
     name:'production',    
-    asset_path: process.env.SERVICEHUB_ASSEST_PATH,
+    asset_path: process.env.SERVICEHUB_ASSET_PATH,
     session_cookie_key: process.env.SERVICEHUB_SESSION_COOKIE_KEY,
     db: process.env.SERVICEHUB_DB,
     google_client_id: process.env.SERVICEHUB_GOOGLE_CLIENT_ID,
@@ -42,4 +44,6 @@ const production={
 }
 
 
-module.exports = eval(process.env.SERVICEHUB_ENVIRONMENT)==undefined? development:eval(process.env.SERVICEHUB_ENVIRONMENT) ;
+module.exports = //development;
+//production;
+eval(process.env.SERVICEHUB_ENVIRONMENT)==undefined? development:eval(process.env.SERVICEHUB_ENVIRONMENT) ;

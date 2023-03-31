@@ -4,6 +4,8 @@ const env= require('./config/environment');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const app=express();
+require('./config/view-helpers')(app);
+
 const port=6565;
 const expressLayouts = require('express-ejs-layouts');
 

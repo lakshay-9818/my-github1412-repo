@@ -1,6 +1,6 @@
 <head>
    
-    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="<%= assetPath('css/blog.css') %>">
 </head>
 <body>
     <section id="k1">
@@ -24,8 +24,8 @@
                     <%= i.createdAt %><br>
                     "<em><%= i.content %></em>"
                         <% if(locals.user && locals.user.id == i.user.id){ %>
-                    <br> <a href="/blogs/deletePost?id=<%=i._id%>"><i class="bi bi-trash-fill"></i></a>
-                    <% } %>
+                            <% } %>
+                            <br> <a href="/blogs/deletePost?id=<%=i._id%>"><i class="bi bi-trash-fill"></i></a>
                 </li>
                 <% } %>
             </ul>
