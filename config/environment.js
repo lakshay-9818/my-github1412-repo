@@ -1,4 +1,4 @@
-//require('dotenv').config();
+require('dotenv').config();
 const fs = require('fs');
 const rfs= require('rotating-file-stream');
 const path = require('path');
