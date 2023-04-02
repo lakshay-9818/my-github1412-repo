@@ -40,10 +40,11 @@ module.exports.createVendor = function(req,res)
         if(!vendor){ 
             //once confirmed that cardNo is not used we now have to check if cardNo
             //is valid [present in citizen DB] 
-            Citizen.findOne({cardNo:req.body.cardNo},function(err,citizen){
-                if(err){console.log('error in checking up citizenship'); return;}
-                if(citizen){
-                    //citizenship is present in citizenDB so create a vendor
+            //commented until next commit
+            // Citizen.findOne({cardNo:req.body.cardNo},function(err,citizen){
+            //      if(err){console.log('error in checking up citizenship'); return;}
+            //      if(citizen){
+            //         //citizenship is present in citizenDB so create a vendor
                     Vendor.create(
     
                         // {name: req.body.name, phone: req.body.phone , pin: req.body.pin 
@@ -54,9 +55,10 @@ module.exports.createVendor = function(req,res)
                         req.flash('success','Successfully registered');
                         return res.redirect('/');
                         });
-                }
-                else{req.flash('error','cardNo is fake'); return res.redirect('back');}
-            });
+            //     }
+            //     //commented until next commit
+            //     //else{req.flash('error','cardNo is fake'); return res.redirect('back');}
+            // });
 
         }
 

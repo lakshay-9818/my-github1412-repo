@@ -13,20 +13,10 @@ body{
     border-top: 3px solid rgb(255, 255, 255);
 }
 
-#Home::before{
-    content: "";
-    position: absolute;
-    top: 62px;
-    left: 0px;
-    height:500px;
-    width:100%;
-    background-color: black;
-    background:url(../images/bg17.jpeg ) no-repeat center center ;
-    background-size:cover;
-    opacity: 0.8;
-    filter: brightness(45%);
-    z-index: -1;
-}
+/* #Home::before{
+    
+} */
+
 
 #h-primary,.p1{
     margin: 10px auto;

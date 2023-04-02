@@ -24,8 +24,8 @@
                     <%= i.createdAt %><br>
                     "<em><%= i.content %></em>"
                         <% if(locals.user && locals.user.id == i.user.id){ %>
-                            <% } %>
                             <br> <a href="/blogs/deletePost?id=<%=i._id%>"><i class="bi bi-trash-fill"></i></a>
+                            <% } %>
                 </li>
                 <% } %>
             </ul>

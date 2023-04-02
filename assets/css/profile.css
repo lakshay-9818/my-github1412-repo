@@ -37,7 +37,8 @@
     border-top-right-radius: .25rem;
     height: 112px;
     background-color: #e6e6e6;
-}
+} 
+
 
 .profile-card-2 .card.profile-primary::before {
 	background-color: #008cff;
