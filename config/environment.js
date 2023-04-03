@@ -44,6 +44,6 @@ const production={
 }
 
 
-module.exports = //development;
+module.exports = development;
 //production;
-eval(process.env.SERVICEHUB_ENVIRONMENT)==undefined? development:eval(process.env.SERVICEHUB_ENVIRONMENT) ;
+//eval(process.env.SERVICEHUB_ENVIRONMENT)==undefined? development:eval(process.env.SERVICEHUB_ENVIRONMENT) ;

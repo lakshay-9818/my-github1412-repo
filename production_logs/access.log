@@ -353,3 +353,75 @@
 ::1 - - [02/Apr/2023:11:45:31 +0000] "GET /js/home_post.js HTTP/1.1" 404 154 "http://localhost:6565/blogs/blogPage" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 ::1 - - [02/Apr/2023:11:45:59 +0000] "GET / HTTP/1.1" 304 - "http://localhost:6565/blogs/blogPage" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 ::1 - - [02/Apr/2023:16:59:01 +0000] "GET / HTTP/1.1" 200 26518 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:46 +0000] "GET / HTTP/1.1" 200 26489 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:46 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:46 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:49 +0000] "GET /blogs/blogPage HTTP/1.1" 200 8502 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:50 +0000] "GET /js/home_post.js HTTP/1.1" 404 154 "http://localhost:6565/blogs/blogPage" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:55 +0000] "GET /sign_in HTTP/1.1" 304 - "http://localhost:6565/blogs/blogPage" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:55 +0000] "GET /images/logoG.png HTTP/1.1" 404 155 "http://localhost:6565/sign_in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:20:55 +0000] "GET /images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg HTTP/1.1" 404 198 "http://localhost:6565/sign_in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:03 +0000] "POST /users/create-session HTTP/1.1" 302 46 "http://localhost:6565/sign_in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:03 +0000] "GET / HTTP/1.1" 200 28420 "http://localhost:6565/sign_in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:04 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:04 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:06 +0000] "GET /users/profile HTTP/1.1" 200 18251 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:06 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:26 +0000] "GET /users/profile HTTP/1.1" 304 - "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:21:27 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:23:52 +0000] "GET /users/profile HTTP/1.1" 200 18189 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:23:53 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:23:54 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:23:54 +0000] "GET /images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg HTTP/1.1" 404 198 "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [02/Apr/2023:18:23:55 +0000] "GET /undefined HTTP/1.1" 404 148 "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+[0mGET / [32m200[0m 451.320 ms - 26362[0m
+[0mPOST /api/v1/users/create-session [32m200[0m 86.905 ms - 535[0m
+[0mGET /sign_in [32m200[0m 77.097 ms - 10347[0m
+[0mGET /sign_in [32m200[0m 17.594 ms - 10347[0m
+[0mPOST /users/create-session [36m302[0m 39.870 ms - 46[0m
+[0mGET / [32m200[0m 66.577 ms - 28293[0m
+[0mGET /users/profile [32m200[0m 90.251 ms - 18208[0m
+[0mGET /users/css/layout.css [33m404[0m 40.976 ms - 159[0m
+[0mGET /users/css/profile.css [33m404[0m 67.182 ms - 160[0m
+[0mGET /users/js/U-profile.js [33m404[0m 118.094 ms - 160[0m
+[0mGET /users/images/logoG.png [33m404[0m 137.654 ms - 161[0m
+[0mGET /users/css/layout.css [33m404[0m 166.883 ms - 159[0m
+[0mGET /users/css/profile.css [33m404[0m 163.819 ms - 160[0m
+[0mGET /users/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg [33m404[0m 24.875 ms - 204[0m
+[0mGET /users/profile [36m304[0m 41.491 ms - -[0m
+[0mGET /users/css/layout.css [33m404[0m 34.664 ms - 159[0m
+[0mGET /users/css/profile.css [33m404[0m 51.756 ms - 160[0m
+[0mGET /users/js/U-profile.js [33m404[0m 90.488 ms - 160[0m
+[0mGET /users/images/logoG.png [33m404[0m 83.997 ms - 161[0m
+[0mGET /users/css/layout.css [33m404[0m 67.138 ms - 159[0m
+[0mGET /users/css/profile.css [33m404[0m 64.822 ms - 160[0m
+[0mGET /users/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg [33m404[0m 17.666 ms - 204[0m
+[0mGET /blogs/blogPage [32m200[0m 121.655 ms - 8729[0m
+[0mGET /blogs/css/layout.css [33m404[0m 27.262 ms - 159[0m
+[0mGET /blogs/css/blog.css [33m404[0m 29.753 ms - 157[0m
+[0mGET /blogs/images/logoG.png [33m404[0m 9.360 ms - 161[0m
+[0mGET /blogs/css/layout.css [33m404[0m 17.732 ms - 159[0m
+[0mGET /blogs/css/blog.css [33m404[0m 17.881 ms - 157[0m
+[0mGET /blogs/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg [33m404[0m 12.136 ms - 204[0m
+[0mGET /blogs/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg [33m404[0m 12.413 ms - 204[0m
+[0mPOST /blogs/write [36m302[0m 100.174 ms - 116[0m
+[0mGET /blogs/blogPage [32m200[0m 55.685 ms - 9301[0m
+[0mGET /blogs/css/layout.css [33m404[0m 24.497 ms - 159[0m
+[0mGET /blogs/css/blog.css [33m404[0m 24.870 ms - 157[0m
+[0mGET /blogs/css/layout.css [33m404[0m 35.310 ms - 159[0m
+[0mGET /blogs/images/logoG.png [33m404[0m 34.628 ms - 161[0m
+[0mGET /blogs/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg [33m404[0m 12.706 ms - 204[0m
+[0mPOST /blogs/write [36m302[0m 43.161 ms - 116[0m
+[0mGET /blogs/blogPage [32m200[0m 44.380 ms - 9866[0m
+[0mGET /blogs/css/layout.css [33m404[0m 29.610 ms - 159[0m
+[0mGET /blogs/css/blog.css [33m404[0m 31.492 ms - 157[0m
+[0mGET /blogs/images/logoG.png [33m404[0m 14.321 ms - 161[0m
+[0mGET /blogs/css/layout.css [33m404[0m 51.270 ms - 159[0m
+[0mGET /blogs/css/blog.css [33m404[0m 43.690 ms - 157[0m
+[0mGET /blogs/images/360_F_321606502_srp20qA1LTbWdZKZFaGHx1rdcPIStjLb.jpg [33m404[0m 14.679 ms - 204[0m
+[0mGET /api/v1/posts/ [32m200[0m 39.020 ms - 1738[0m
+[0mDELETE /api/v1/posts/642abaaf1c51e5b33715dc29 [33m401[0m 19.736 ms - -[0m
+[0mPOST /api/v1/users/create-session [32m200[0m 14.127 ms - 535[0m
+[0mDELETE /api/v1/posts/642abaaf1c51e5b33715dc29 [33m401[0m 5.391 ms - -[0m
+[0mPOST /api/v1/users/create-session [32m200[0m 362.214 ms - 535[0m
+[0mDELETE /api/v1/posts/642abaaf1c51e5b33715dc29 [33m401[0m 23.967 ms - -[0m

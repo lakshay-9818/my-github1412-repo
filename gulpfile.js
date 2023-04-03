@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 //const sass = require('gulp-sass')(require('sass'));
-//const cssnano = require('gulp-cssnano');
-const cleanCSS = require('gulp-clean-css');
+const cssnano = require('gulp-cssnano');
+//const cleanCSS = require('gulp-clean-css');
 const rev = require('gulp-rev');
 const uglify = require('gulp-uglify-es').default;
 const imagemin = require('gulp-imagemin');
@@ -25,60 +25,62 @@ const imagemin = require('gulp-imagemin');
 //    .pipe(gulp.dest('./public/assets'));
 //    done();
 // });
-gulp.task('css', () => {
-   console.log('minifying css...');
-   return gulp.src('./assets/**/*.css')
-     .pipe(cleanCSS())
-     .pipe(rev())
-     .pipe(gulp.dest('./public/assets'))
-     .pipe(rev.manifest({
-      cwd: 'public',
-      merge: true
-  }))
-     .pipe(gulp.dest('./public/assets'));
- });
+// gulp.task('css', () => {
+//    console.log('minifying css...');
+//    return gulp.src('./assets/**/*.css')
+//      .pipe(cleanCSS())
+//      .pipe(rev())
+//      .pipe(gulp.dest('./public/assets'))
+//      .pipe(rev.manifest({
+//       cwd: 'public',
+//       merge: true
+//   }))
+//      .pipe(gulp.dest('./public/assets'));
+//  });
 
-gulp.task('js', function(done){
-   console.log('minifying js...');
-    gulp.src('./assets/**/*.js')
-   .pipe(uglify())
-   .pipe(rev())
-   .pipe(gulp.dest('./public/assets'))
-   .pipe(rev.manifest({
-       cwd: 'public',
-       merge: true
-   }))
-   .pipe(gulp.dest('./public/assets'));
-   done()
-});
-
-
-gulp.task('images', function(done){
-   console.log('compressing images...');
-   gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)')
-   .pipe(imagemin())
-   .pipe(rev())
-   .pipe(gulp.dest('./public/assets'))
-   .pipe(rev.manifest({
-       cwd: 'public',
-       merge: true
-   }))
-   .pipe(gulp.dest('./public/assets'));
-   done();
-});
+// gulp.task('js', function(done){
+//    console.log('minifying js...');
+//     gulp.src('./assets/**/*.js')
+//    .pipe(uglify())
+//    .pipe(rev())
+//    .pipe(gulp.dest('./public/assets'))
+//    .pipe(rev.manifest({
+//        cwd: 'public',
+//        merge: true
+//    }))
+//    .pipe(gulp.dest('./public/assets'));
+//    done()
+// });
 
 
-// empty the public/assets directory
-gulp.task('clean:assets', function(done){
-    //del.deleteSync('./public/assets');
-   done();
-});
+// gulp.task('images', function(done){
+//    console.log('compressing images...');
+//    gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)')
+//    .pipe(imagemin())
+//    .pipe(rev())
+//    .pipe(gulp.dest('./public/assets'))
+//    .pipe(rev.manifest({
+//        cwd: 'public',
+//        merge: true
+//    }))
+//    .pipe(gulp.dest('./public/assets'));
+//    done();
+// });
+
+
+// // empty the public/assets directory
+// gulp.task('clean:assets', function(done){
+//     //del.deleteSync('./public/assets');
+//    done();
+// });
 
 // Call the tasks in series
-gulp.task('build', gulp.series('clean:assets', 'css', 'js', 'images'), function(done){
-   console.log('Building assets');
-   done();
-});
+// gulp.task('build', gulp.series('css', 'js', 'images'), function(done){
+//    console.log('Building assets');
+//    done();
+// });
+
+
 
 
 
@@ -116,3 +118,44 @@ gulp.task('build', gulp.series('clean:assets', 'css', 'js', 'images'), function(
 //     .pipe(rev.manifest())
 //     .pipe(gulp.dest('dist/images'));
 // });
+
+
+
+
+
+         gulp.task('css', function(done){  
+               console.log('minifying css...');   
+                     
+                 gulp.src('./assets/**/*.css')
+                 .pipe(cssnano())     
+                 .pipe(rev())     
+                 .pipe(gulp.dest('./public/assets/'))     
+                 .pipe(rev.manifest({         
+                  cwd: 'public',        
+                   merge: true     
+                  }))     
+                  .pipe(gulp.dest('./public/assets'));   
+                    done();
+                   });
+
+
+
+                   gulp.task('js', function(done){ 
+                         console.log('minifying js...');  
+                             gulp.src('./assets/**/*.js')  
+                                .pipe(uglify())  
+                                   .pipe(rev())   
+                                     .pipe(gulp.dest('./public/assets'))  
+                                        .pipe(rev.manifest({     
+                                              cwd: 'public',    
+                                                   merge: true  
+                                                   }))  
+                                                      .pipe(gulp.dest('./public/assets'));  
+                                                         done() });
+
+
+
+                   gulp.task('images', function(done){     console.log('compressing images...');     gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)')     .pipe(imagemin())     .pipe(rev())     .pipe(gulp.dest('./public/assets'))     .pipe(rev.manifest({         cwd: 'public',         merge: true     }))     .pipe(gulp.dest('./public/assets'));     done(); });
+// empty the public/assets directory 
+gulp.task('clean:assets', function(done){    /* del.sync('./public/assets'); */    done(); }); 
+ gulp.task('build', gulp.series('clean:assets', 'css', 'js', 'images'), function(done){     console.log('Building assets');     done(); });

@@ -17,7 +17,7 @@ module.exports.index = async function(req,res){
 }
 
 module.exports.destroy = async function(req,res) {  
-    try{
+    try{console.log(post.user);
         let post =await Post.findById(req.params.id);
         if(post.user ==req.user.id){
         post.remove();
