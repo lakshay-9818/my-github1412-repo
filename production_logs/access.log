@@ -409,3 +409,6 @@
 [0mGET / [32m200[0m 33.987 ms - 28947[0m
 ::1 - - [08/Apr/2023:15:50:31 +0000] "GET / HTTP/1.1" 200 28888 "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 ::1 - - [08/Apr/2023:15:50:47 +0000] "GET / HTTP/1.1" 304 - "http://localhost:6565/users/profile" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [08/Apr/2023:17:30:35 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [08/Apr/2023:17:30:45 +0000] "GET /search-reqq?skillReqq=mason&pinReqq=110055 HTTP/1.1" 200 13014 "http://localhost:6565/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+::1 - - [08/Apr/2023:17:30:54 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"

@@ -86,12 +86,12 @@ function vendorReqq(req,res){
         if(err){console.log('er is encountered'); return; }
 
         if(req.isAuthenticated())  {
-               return res.render('home',{            
+               return res.render('home',{ titl:`Home`,           
             contact_List: vendors ,logged_In: true
         } );}
 
         else  {
-               return res.render('home',{            
+               return res.render('home',{titl:`Home`,            
             contact_List: vendors ,logged_In: false
         } );}
      });
