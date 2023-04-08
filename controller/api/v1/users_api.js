@@ -1,17 +1,20 @@
-const User = require('../../../models/user');
-const jwt = require('jsonwebtoken');
+import User from '../../../models/user.js';
+import jwt from "jsonwebtoken";
+import env from "../../../config/environment.js";
 
-module.exports.createSession= async function(req,res){
+async function createSession(req,res){
     try{
     let user = await User.findOne({email: req.body.email});
     if(!user || user.password!= req.body.password){
         return res.json(422,{message: 'Invalid username or password'});
     }
     return res.json(200,{message:'Sign in successful,here is our token please keep it safe',
-data:{token: jwt.sign(user.toJSON(),'codial',{expiresIn:'24h'})} });
+data:{token: jwt.sign(user.toJSON(),env.jwt_secret,{expiresIn:'24h'})} });
 }catch(err){
     console.log('*******',err);
-    return res.json(500,{message: 'Internal Server error'});
+    return res.json(500,{message: 'Internal Server error'+env.jwt_secret});
     }
 
 }
+
+export {createSession};

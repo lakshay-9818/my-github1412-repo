@@ -1,10 +1,13 @@
-const express= require('express');
-const passport = require('passport');
+import express from "express";
+import passport from "passport";
 const router = express.Router();
 
-const blogController = require('../controller/blog_controller');
+import {write,
+    blogVew,
+    deleteP
+}  from "../controller/blog_controller.js";
 
-router.post('/write',passport.checkAuthentication, blogController.write);
-router.get('/blogPage', blogController.blogVew);
-router.get('/deletePost',passport.checkAuthentication, blogController.deleteP);
-module.exports= router;
+router.post('/write',passport.checkAuthentication, write);
+router.get('/blogPage', blogVew);
+router.get('/deletePost',passport.checkAuthentication, deleteP);
+export default router;

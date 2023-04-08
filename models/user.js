@@ -1,10 +1,15 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const Vendor= require('../models/vendors');
+import Vendor from "../models/vendors.js";
 
-const multer= require('multer');
-const path = require('path');
+import multer from "multer";
+import path from "path";
 const AVATAR_PATH =path.join('/uploads/users/avatars');
+import { fileURLToPath } from "url";
+import { dirname } from "path"; 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const userSchema= new mongoose.Schema({
     email:{
@@ -14,8 +19,8 @@ const userSchema= new mongoose.Schema({
     },
     phoneNo:{
         type: Number,
-        required: true,
-        unique: true
+       // required: true,
+       // unique: true
     },
     password:{
         type: String,
@@ -27,7 +32,7 @@ const userSchema= new mongoose.Schema({
     },
     gender:{
         type: String,
-        required:true
+      //  required:true
     },
     avatar:{ type:String},
     
@@ -54,4 +59,4 @@ const userSchema= new mongoose.Schema({
 
  const User = mongoose.model('User',userSchema );
 
-module.exports = User;
+ export default User;

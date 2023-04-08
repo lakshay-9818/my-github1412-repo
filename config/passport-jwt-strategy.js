@@ -1,9 +1,9 @@
-const passport = require('passport');
-const JWTStrategy = require('passport-jwt').Strategy;
-const ExtractJWT = require('passport-jwt').ExtractJwt;
-const env = require('./environment');
-
-const User =require('../models/user');
+import passport from "passport";
+import passportjwt from "passport-jwt";
+const JWTStrategy = passportjwt.Strategy;
+const ExtractJWT = passportjwt.ExtractJwt;
+import env from "./environment.js";
+import User from "../models/user.js";
 
 let opts={
     jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
@@ -22,6 +22,6 @@ User.findById(jwtPayLoad._id, function(err,user){
 
 }));
 
-module.exports= passport;
+export default passport;
 
 

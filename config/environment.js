@@ -1,8 +1,15 @@
-require('dotenv').config();
-const fs = require('fs');
-const rfs= require('rotating-file-stream');
-const path = require('path');
-const morgan = require('morgan');
+//import * as dotenv from 'dotenv'; 
+//dotenv.config();
+import fs from "fs";
+import rfs from "rotating-file-stream";
+import path from "path";
+import morgan from 'morgan';
+import { fileURLToPath } from "url";
+import { dirname } from "path"; 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const logDirectory = path.join(__dirname,'../production_logs');
 fs.existsSync(logDirectory)||fs.mkdirSync(logDirectory);
 
@@ -43,7 +50,6 @@ const production={
     }
 }
 
-
-module.exports = //development;
-//production;
-eval(process.env.SERVICEHUB_ENVIRONMENT)==undefined? development:eval(process.env.SERVICEHUB_ENVIRONMENT) ;
+export default eval(process.env.SERVICEHUB_ENVIRONMENT) == undefined
+  ? development
+  : eval(process.env.SERVICEHUB_ENVIRONMENT);

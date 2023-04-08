@@ -1,6 +1,6 @@
-const User= require('../../../models/user');
-const Post= require('../../../models/posts');
-module.exports.index = async function(req,res){
+import User from "../../../models/user.js";
+import Post from "../../../models/posts.js";
+ async function index(req,res){
 
     if(!req.isAuthenticated)return res.redirect('back');
 
@@ -16,8 +16,8 @@ module.exports.index = async function(req,res){
 
 }
 
-module.exports.destroy = async function(req,res) {  
-    try{console.log(post.user);
+async function destroy(req,res) {  
+    try{
         let post =await Post.findById(req.params.id);
         if(post.user ==req.user.id){
         post.remove();
@@ -33,3 +33,5 @@ module.exports.destroy = async function(req,res) {
     }  
     
     }
+
+export {index, destroy};

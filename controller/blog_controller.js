@@ -1,7 +1,7 @@
- const Post =require('../models/posts');
+import Post from "../models/posts.js";
  
 
- module.exports.blogVew= function(req,res){
+  function blogVew(req,res){
 
     Post.find({}).populate('user').exec(function(err,bloggs){
         if(err)alert('errror in finding bloggs');
@@ -18,7 +18,7 @@
     
 }
 
- module.exports.write =async function(req,res){
+async function write(req,res){
     //console.log(req.user);
     let post=  await Post.create({
         content: req.body.content,
@@ -37,7 +37,7 @@
     
  }
 
- module.exports.deleteP = async function(req,res){    
+async function deleteP(req,res){    
    let post =await Post.findById(req.query.id);
    if(post.user._id== req.user.id){
     post.remove();
@@ -48,3 +48,5 @@
        
         return res.redirect('back');
    }
+
+export {blogVew, write, deleteP };

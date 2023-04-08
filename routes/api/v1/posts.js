@@ -1,9 +1,9 @@
-const express= require('express');
+import express from "express";
 const router = express.Router();
-const passport= require('passport');
+import passport from "passport";
 
-const postApi= require('../../../controller/api/v1/post_api');
-router.get('/',postApi.index);
-router.delete('/:id',passport.authenticate('jwt',{session:false}),postApi.destroy);
+import { index, destroy } from "../../../controller/api/v1/post_api.js";
+router.get('/',index);
+router.delete('/:id',passport.authenticate('jwt',{session:false}),destroy);
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const mongoose= require('mongoose');
+import mongoose from "mongoose";
 // created a schema for collection 
 const vendorSchema= new mongoose.Schema({
 name:{ type:String, required:true },
@@ -15,4 +15,4 @@ skill:{type:String, required:true}
 // Vendor is our collection here with schema as vendorSchema
 const Vendor = mongoose.model('Vendor',vendorSchema );
 
-module.exports = Vendor;
+export default Vendor;

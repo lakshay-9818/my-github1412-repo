@@ -1,27 +1,33 @@
-const express= require('express');
-const cookieParser= require('cookie-parser');
-const env= require('./config/environment');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
+import express from "express";
+import env from "./config/environment.js";
+import logger from "morgan";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
 const app=express();
-require('./config/view-helpers')(app);
+import getAssetPath from "./config/view-helpers.js";
+getAssetPath(app);
 
 const port=6565;
-const expressLayouts = require('express-ejs-layouts');
+import expressLayouts from "express-ejs-layouts";
 
-const db= require('./config/mongoose');
-const session = require('express-session');
-const passport= require('passport');
-const passportLocal = require('./config/passport-local-strategy');
-const passportJWT = require('./config/passport-jwt-strategy.js');
-const passportGoogle = require('./config/passport-google-oauth-strategy.js');
+import db from "./config/mongoose.js";
+// used for session cookie
+import session from "express-session";
+import passport from "passport";
+import passportLocal from "./config/passport-local-strategy.js";
+import passportJWT from "./config/passport-jwt-strategy.js";
+import passportGoogle from "./config/passport-google-oauth-strategy.js";
 
+import MongoStore from "connect-mongo";
+import sassMiddleware from "node-sass-middleware";
+import flash from "connect-flash";
+import { setFlash } from "./config/middleware.js";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-const MongoStore= require('connect-mongo');
-const sassMiddleware = require('node-sass-middleware');
-const flash =require('connect-flash');
-const customMware =require('./config/middleware')
-const path =require('path');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 if(env.name=='development'){
 app.use(sassMiddleware({
@@ -72,13 +78,14 @@ app.use(session({
 }));
 
 app.use(flash());
-app.use(customMware.setFlash);
+app.use(setFlash);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
-//use express router 
-app.use('/',require('./routes'));
+// use express router
+import routes from "./routes/index.js";
+app.use("/", routes);
 
 app.listen(port,function(err){
     if(err){console.log(`error in running the server: ${err}`);}

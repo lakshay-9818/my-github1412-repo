@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const env = require('../config/environment');
-mongoose.connect('mongodb://localhost/'+env.db);
+import mongoose from "mongoose";
+import env from "./environment.js";
+mongoose.connect(`mongodb://localhost/${env.db}`);
 
 const db = mongoose.connection;
 
@@ -12,3 +12,5 @@ db.once('open', function(){
     console.log('successfully connected to database');
 });
 
+
+export default db;

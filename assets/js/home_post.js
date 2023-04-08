@@ -1,5 +1,5 @@
 
-const Post =require('../../models/posts');
+import Post from '../../models/posts';
 {   
     //method to submit data for new post using ajax
     console.log('script loaded');

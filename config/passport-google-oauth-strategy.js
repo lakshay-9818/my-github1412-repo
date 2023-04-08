@@ -1,14 +1,16 @@
-const passport = require('passport');
-const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const crypto = require('crypto');
-const User =require('../models/user');
-const env = require('../config/environment');
+import passport from "passport";
+import passportGoogleOAuth from "passport-google-oauth";
+const googleStrategy = passportGoogleOAuth.OAuth2Strategy;
+import crypto from "crypto";
+import User from "../models/user.js";
+import env from "./environment.js";
 
 //tell passport to use a new strategy
 passport.use(new googleStrategy({
     clientID: env.google_client_id,
     clientSecret: env.google_client_secret,
-    callbackURL: env.google_callback_URL
+    callbackURL: env.google_callback_URL,
+    
 },
 function(accessToken,refresh,profile,done){
     // find a user
@@ -23,16 +25,16 @@ function(accessToken,refresh,profile,done){
             User.create({
                 name: profile.displayName,
                 email: profile.emails[0].value,
+                gender:profile.gender,
                 password: crypto.randomBytes(20).toString('hex')
-            },function(err,user){
+            },function(err,user){                
                 if(err){
                     console.log("error in creating user google-strategy!-passport",err); return;}
-                return(null,user);  
+                return done(null,user);  
             }  
             )
         }
     })
 }
 ));
-
-module.exports=  passport;
+export default passport;

@@ -1,6 +1,6 @@
-const express= require('express');
+import express from "express";
 const router = express.Router();
-const usersApi= require('../../../controller/api/v1/users_api');
+import {createSession} from"../../../controller/api/v1/users_api.js";
 
-router.post('/create-session',usersApi.createSession);
-module.exports =router;
+router.post('/create-session',createSession);
+export default router;

@@ -1,11 +1,15 @@
-const User= require('../models/user');
-const Vendor = require('../models/vendors');
-const fs= require('fs');
-const path = require('path');
+import User from '../models/user.js';
+import Vendor from '../models/vendors.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 
-
-module.exports.profile = function(req, res){
+function profile(req, res){
     
     let user= User.findById(req.user._id)
     user.populate('favVendors')
@@ -21,7 +25,7 @@ module.exports.profile = function(req, res){
     };        
 
 
-module.exports.addFav = function(req, res){      
+function addFav(req, res){      
     var id = req.query.id;  
     console.log('user is '+ req.user);
     console.log('vendor is '+ id);
@@ -33,36 +37,32 @@ module.exports.addFav = function(req, res){
     });
     console.log('vendor added to user is'+ req.user.favVendors);
     req.flash('success','vendor added to user');
-    //  Vendor.findById(id, function(err,vendi){
-    //     if(err)console.log('error! vendor not added to favourites');
-    //     else req.user.favVendor= vendi;
-    //     //console.log('added vendor:'+vendi.name+ ' to user: '+req.user.name+  ' ' +req.user.fav);
-    //  });
+    
     return res.redirect('back');
 }
 
-module.exports.remFav = function(req, res){      
+function remFav(req, res){      
     var id = req.query.id;  
     console.log('user is '+ req.user);
     console.log('vendor is '+ id);
     
     User.findById(req.user._id, function(err,user){
-     //console.log(user);   
+       
         
         const index = user.favVendors.indexOf(id);
         user.favVendors.splice(index, 1);
         user.save();
         req.user.favVendors.splice(index, 1);
-        //req.flash('success','removed from favourities');
+       
     });
     //console.log('vendor added to user is'+ req.user.favVendors);
-    req.flash('success','vendor deleted from fav');
+    req.flash('success','removed from favourities');
 
     return res.redirect('back');
 }
 
 
-module.exports.create = function(req,res){
+function create(req,res){
     if(req.body.password!=req.body.confirm_password){
        console.log('pasword and cnfirm password are different');
         return res.redirect('back');
@@ -89,12 +89,12 @@ module.exports.create = function(req,res){
 }
 
 
-module.exports.createSession=function(req,res){
+function createSession(req,res){
     req.flash('success','Signed in successfully');
     res.redirect('/');
 }
 
-module.exports.destroySession =function(req, res, next) {
+function destroySession(req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
       req.flash('success','You have logged out');
@@ -102,14 +102,12 @@ module.exports.destroySession =function(req, res, next) {
     });
   }
 
-
-  module.exports.update= async function(req,res){
+async function update(req,res){
     
     try{
-        let user = await User.findById(req.user._id);    
-        
-
-        User.uploadedAvatar(req,res,function(err){
+        let user = await User.findById(req.user._id);
+    
+     User.uploadedAvatar(req,res,function(err){
             if(err) console.log('*****multer Error:',err);
            
                if(req.file){
@@ -117,14 +115,16 @@ module.exports.destroySession =function(req, res, next) {
                         if(fs.existsSync(path.join(__dirname,'..',user.avatar))){                       
                         fs.unlinkSync(path.join(__dirname,'..',user.avatar));}
                     }
-
                     //this is sving the path of the uploaded file into the avatar field of user                               
                     user.avatar= User.avatarPath+'/'+req.file.filename;
-                    user.save();
+                    
                     console.log('successfully ss');
                     req.flash('success','uploaded successfully!');
                 }else {req.flash('error','please choose a file to upload');}
-                
+                user.phoneNo =req.body.phoneNo;
+                if(req.body.gender)user.gender= req.body.gender;
+                if(req.body.password)user.password= req.body.password;
+                    user.save();
             });
             
             return res.redirect('back');
@@ -136,3 +136,5 @@ module.exports.destroySession =function(req, res, next) {
         return res.redirect('back');
     }
   }
+
+  export {profile,addFav,remFav,create,createSession,destroySession,update};

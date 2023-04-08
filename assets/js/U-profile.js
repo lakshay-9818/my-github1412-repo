@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    
+
     $("#a1").click(function(){
         $("#a3").removeClass("active");
         $("#edit").removeClass("active");        
@@ -14,7 +16,7 @@ $(document).ready(function(){
         $("#a3").addClass("active");
         $("#edit").addClass("active");
       });
+  
+});
 
 
-      
-  });

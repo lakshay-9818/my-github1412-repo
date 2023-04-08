@@ -1,9 +1,9 @@
-const Citizen = require('../models/citizen');
-const Vendor= require('../models/vendors');
+import Citizen from '../models/citizen.js';
+import Vendor from '../models/vendors.js';
 
-module.exports.home = function(req, res){
-    //console.log(req.cookies);
-    Vendor.find({/*pin: "110033"*/}, function(err, vendors){
+function home(req, res){
+    
+    Vendor.find({}, function(err, vendors){
 
         if(err){console.log('er is encountered'); return; }
 
@@ -24,7 +24,7 @@ module.exports.home = function(req, res){
 
 
 
-module.exports.newVpage= function(req,res){let loggin=false;
+ function newVpage(req,res){let loggin=false;
     if(req.user)loggin= true;
     return res.render('V-Registration',
     {
@@ -32,7 +32,7 @@ module.exports.newVpage= function(req,res){let loggin=false;
     });
 }
 
-module.exports.createVendor = function(req,res)
+ function createVendor(req,res)
 { //checking if cardNo is already used
     Vendor.findOne({cardNo:req.body.cardNo}, function(err,vendor){
         if(err){req.flash('error','error in checking up duplicacy'); return;}
@@ -68,7 +68,7 @@ module.exports.createVendor = function(req,res)
 }
 
 
-module.exports.deleteV = function(req,res){
+function deleteV(req,res){
     let id = req.query.id;
     Vendor.findByIdAndDelete(id, function(err){
        if(err){console.log('error while deleting it'); return;}
@@ -78,7 +78,7 @@ module.exports.deleteV = function(req,res){
    }
 
 
-module.exports.vendorReqq= function(req,res){
+function vendorReqq(req,res){
 
     console.log(req.query.pinReqq);
     Vendor.find({ pin: req.query.pinReqq,skill:req.query.skillReqq}, function(err, vendors){
@@ -97,13 +97,13 @@ module.exports.vendorReqq= function(req,res){
      });
 }
 
-module.exports.signU = function(req,res){
+function signU(req,res){
     if(req.user)return res.redirect('/users/profile');
     return res.render('sign-up-page',{titl:`SignUp`,logged_In:false});
 }
-module.exports.signI = function(req,res){
+function signI(req,res){
     if(req.user)return res.redirect('/users/profile');
     return res.render('sign-in-page',{titl:`LogIn `,logged_In:false});
 }
 
-
+export {signI,signU ,vendorReqq,deleteV, createVendor,newVpage,home};

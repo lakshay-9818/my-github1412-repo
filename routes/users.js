@@ -1,27 +1,35 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
-const passport = require('passport');
+import passport from "passport";
 
 
-const usersController = require('../controller/user_controller');
+import {
+    profile,
+    update,
+    create,
+    createSession,
+    destroySession,
+    remFav,
+    addFav
+  } from "../controller/user_controller.js";
 
-router.get('/profile',passport.checkAuthentication, usersController.profile);
+router.get('/profile',passport.checkAuthentication, profile);
 
 
 
 //add a new user entry to db
-router.post('/create', usersController.create);
+router.post('/create', create);
 router.post('/create-session', 
     passport.authenticate('local',{failureRedirect:'/sign_in'}),
-    usersController.createSession);
+    createSession);
 
-router.get('/logout',usersController.destroySession);
+router.get('/logout',destroySession);
 
-router.post('/update',passport.checkAuthentication,usersController.update);
-router.get('/addToFav',passport.checkAuthentication,usersController.addFav);
-router.get('/removeFav',passport.checkAuthentication,usersController.remFav);
+router.post('/update',passport.checkAuthentication,update);
+router.get('/addToFav',passport.checkAuthentication,addFav);
+router.get('/removeFav',passport.checkAuthentication,remFav);
 
 router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
-router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/sign-in'}),usersController.createSession);
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/sign-in'}),createSession);
 
-module.exports = router;
+export default router;

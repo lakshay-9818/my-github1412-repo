@@ -1,6 +1,10 @@
-const passport= require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const User= require('../models/user');
+import passport from "passport";
+
+import pl from "passport-local";
+const LocalStrategy = pl.Strategy;
+
+import User from "../models/user.js";
+
 //authentication using passport
 passport.use(new LocalStrategy({
     usernameField: 'email',passReqToCallback:true
@@ -40,7 +44,7 @@ passport.deserializeUser(function(id,done){
 passport.checkAuthentication = function(req,res,next){
 //if user is authenticated then pass on the request to new function(controller's action)
 if(req.isAuthenticated()){return next();}
-return res.redirect('/users/sign_in');
+return res.redirect('/sign_in');
 }
 
 passport.setAuthenticatedUser= function(req,res,next){
@@ -48,4 +52,4 @@ passport.setAuthenticatedUser= function(req,res,next){
     next();
 }
 
-module.exports= passport;
+export default passport;
