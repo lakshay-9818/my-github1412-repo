@@ -15,7 +15,7 @@
       #Home::before{
         content: "";
     position: absolute;
-    top: 62px;
+    top: 60px;
     left: 0px;
     height:500px;
     width:100%;
@@ -161,21 +161,56 @@
 
     <!-- </section> -->
     
-    <section class="bg-dark d-flex vendor" style="overflow-x: scroll">
-      <!-- <ul> -->
+    <section class="bg-dark d-flex vendor" style="overflow-x: scroll;">
+      
       
           <% for(let i of contact_List){ %>
-      <div class="text-uppercase cards border border-info bg-light m-5 p-4 col-sm-9 col-md-6 col-lg-3" style="border-radius: 15px">
+
+
+            <div class="card m-2 col-lg-3 col-md-4 col-sm-12" style="width: 21rem;">
+              <div class="card-body">
+                <h3 class="card-title"><%= i.name%></h3>
+                <span class="badge bg-info text-uppercase"><%= i.skill%></span><span class="card-subtitle m-2 text-muted"><i class="bi bi-star-half"><%=i.star%>|(<%=i.rating%> ratings)</i><span>
+                
+                  <ul class="card-text">
+                  <li >Pincode Served:<strong><%=i.pin%> </strong></li>
+                  <li>Registered Since:<strong> <%= (i.createdAt && i.createdAt.toLocaleDateString() )%></strong></li>
+                  <li>Phone No.:<strong><%=i.phone%></strong></li>
+                </ul>
+
+               <% if(logged_In){ %>      
+                 
+    
+                <form action="/bookings/create-booking?id=<%=i._id%>" method="post" class="card-link">
+                  <input type="datetime-local" name="date" id="" required>
+        <button type="submit" class="btn btn-primary">Book</button> 
+                </form>
+
+                <% if(locals.user.favVendors.includes(i._id)){ %>
+                  <a href="/users/removeFav?id=<%=i._id%>"><i class="card-link bi bi-heart-fill">Remove From Favourites</i> </a>
+                <% } else { %>              
+                  <a href="/users/addToFav?id=<%=i._id%>"><i class="card-link bi bi-heart">Add to Favourites</i> </a>
+              <%  }  %>
+    
+              <% } %>
+
+                
+              </div>
+            </div>
+
+
+
+      <!-- <div class="text-uppercase cards border border-info bg-light m-5 p-4 col-sm-9 col-md-6 col-lg-3" style="border-radius: 15px">
       
       
       <div id="" class="w-100 p-1 m-1" >
           <h2><%= i.name%></h2>
-          <p><span class="badge bg-info"><%= i.skill%></span> | <strong>Registered since</strong> <%= i.createdAt %></p>
+          <p><span class="badge bg-info"><%= i.skill%></span> | <strong>Registered since</strong> <%= (i.createdAt && i.createdAt.toLocaleDateString() )%></p>
       </div>
       <hr>
       <div id="" class="w-100 p-1 m-1 d-flex justify-content-center" style="color: gray;font-size: large;">
           <div class="s1 p-1">pincode:<%=i.pin%> |</div>
-          <div class="s2 p-1"><%= i.phone%> |</div>
+          <div class="s2 p-1"><%= i.phone%> |<%=i.star%></div>
           <div id="favHeart" class="s3 p-1 justify-self-end">
             <% 
             
@@ -187,6 +222,10 @@
                 <a href="/users/addToFav?id=<%=i._id%>"><i class="bi bi-heart"></i> </a>
             <%  }  %>
 
+            <form action="/bookings/create-booking?id=<%=i._id%>" method="post" class="">
+              <input type="datetime-local" name="date" id="" required>
+    <button type="submit" class="btn-primary">Add</button> 
+            </form>
 
           <% } %>
                 
@@ -195,9 +234,9 @@
           </div>
       </div>
       
-    </div>
+    </div> -->
       <% } %>
-      <!-- </ul> -->
+     
   </section>
 
 

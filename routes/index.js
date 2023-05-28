@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import userRouter from "./users.js";
 import blogsRouter from "./blogs.js";
+import bookingRouter from "./bookings.js";
 import api from "./api/index.js";
 
 
@@ -22,6 +23,7 @@ router.get('/sign_in', signI);
 
 
 router.use("/users", userRouter);
+router.use("/bookings", bookingRouter);
 router.use("/blogs", blogsRouter);
 router.use("/api", api);
 

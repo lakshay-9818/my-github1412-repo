@@ -1,5 +1,6 @@
 <head>
 <link rel="stylesheet" href="<%= assetPath('css/profile.css') %>">
+
 </head>
 
 <body>
@@ -31,8 +32,8 @@ else {
                             <i class="bi bi-phone"></i>
                           </div>
                           <div class="list-details">
+                              <small>Mobile Number</small>
                             <span><%= user.phoneNo %></span>
-                            <small>Mobile Number</small>
                           </div>
                         </li>
                         <li class="list-group-item">
@@ -40,8 +41,8 @@ else {
                             <i class="bi bi-envelope"></i>
                           </div>
                           <div class="list-details">
+                              <small>Email Address</small>
                             <span><%= user.email %></span>
-                            <small>Email Address</small>
                           </div>
                         </li>
                         <li class="list-group-item">
@@ -49,8 +50,8 @@ else {
                             <i class="bi bi-calendar-date"></i>
                           </div>
                           <div class="list-details">
-                            <span><%= user.createdAt %></span>
-                            <small>Profile created at</small>
+                              <small>Profile created at</small>
+                            <span><%= (user.createdAt && user.createdAt.toLocaleDateString() )%></span>
                           </div>
                         </li>
                         </ul>
@@ -65,18 +66,19 @@ else {
                     <div class="card-body" style=" height: 65vh; overflow-y: scroll;">
                     <ul class="nav nav-pills nav-pills-primary nav-justified">
                         <li class="nav-item">
-                            <button class="nav-link active" id ="a1"><i class="bi bi-heart-half"></i> <span class="hidden-xs">Favourite vendors</span></a>
+                            <button class="nav-link boton"  id ="a10" onclick="showSection('section1','a10')"><i class="bi bi-heart-half"></i> <span class="hidden-xs">Favourite vendors</span></button>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void();" class="nav-link" id="a2"><i class="bi bi-clock-history"></i> <span class="hidden-xs">Previous bookings</span></a>
+                            <button class="nav-link boton" id ="a20" onclick="showSection('section2','a20')"><i class="bi bi-clock-history"></i> <span class="hidden-xs">Bookings</span></button>
                         </li>
-                        <li class="nav-item" >
-                            <button class="nav-link" id="a3"><i class="bi bi-pencil-square"></i> <span class="hidden-xs">Edit Profile</span></a>
+                        <li class="nav-item " >
+                            <button class="nav-link boton" id="a30" onclick="showSection('section3','a30')"><i class="bi bi-pencil-square"></i> <span class="hidden-xs">Edit Profile</span></button>
                         </li>
                     </ul>
-                    <div class="tab-content p-3" id="tab-ContenT" >
+                    <div class="tab-content p-3" id="tab-ContenT" >                       
                         
-                        <div class="tab-pane active " id="profile">
+                      
+                        <div class="tab-pane section" id="section1">
                             
     
                             <ul class="list-group col-s-12 col-md-9 col-lg-6 "  style="list-style:none">
@@ -93,21 +95,49 @@ else {
                                     <% } %>
                                     
                                 </ul> 
+                        </div>
+
+                        <div class="tab-pane section"  id="section2">
+                         <%   for(let b of booKings){  %>
+                            <div class="border bg-secondary p-2 m-2"  style="color:white;">
+                                   
+                                   <h4 class="text-center text-uppercase"><%=b.vendor.name%></h4>
+                                   <div class="d-flex justify-content-between">
+
+                                       <strong class="badge bg-danger text-uppercase d-inline"><%= b.vendor.skill%></strong>
+                                        <span class="d-block btn btn-outline-light">
+                                            <% if(b.date){%>
+                                            <%= b.date.toLocaleDateString('en-IN')%>
+                                             <%= b.date.toLocaleTimeString('en-IN')%>
+                                              <%}%>
+                                        </span>
+
+                                   </div>
+                                   <div class="d-flex justify-content-center m-1">
+
+                                       <form action="/bookings/close-booking?id=<%=b._id%>"method="post">
+                                           <div class="bg-dark d-flex  p-1">                                           
+
+                                           <input
+                                              class="rating bg-dark"
+                                              min="1" max="5"
+                                              oninput="this.style.setProperty('--value', this.value)"
+                                              step="1"
+                                              style="--stars:5;--value:2; "
+                                              type="range"
+                                              
+                                              value="2">
+                                              <button type="submit" class="btn btn-success">Rate and close booking</button>                                        
                                             </div>
+                                       </form>
+                                   </div>
+                                    <code class="bg-light p-1">Id:"<%=b.id%>"</code>
 
-                        <div class="tab-pane " id="edit">
+                            </div>
+                          <%  } %>
+                        </div>
 
-                            <!-- <form action="/users/update" enctype="multipart/form-data" method="post">
-                                <input type="file" name="avatar" placeholder="profile picture">
-                                
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label"></label>
-                                    <div class="col-lg-9">
-                                        <input type="reset" class="btn btn-secondary" value="Cancel">
-                                        <input type="submit" class="btn btn-primary" value="Save Changes">
-                                    </div>
-                                </div>
-                            </form> -->
+                        <div class="tab-pane section" id="section3">
 
                             <form action="/users/update" enctype="multipart/form-data" method="post">
                                                             <div class="form-group row">
@@ -176,6 +206,7 @@ else {
                                                             </div>
                                                         </form>
                         </div>
+                       
                         
                             
                     </div>
@@ -185,19 +216,8 @@ else {
               
                 
         </div>
-    </div>
+    </div>   
 
-    <script>  
-        function toggleVisibility() {  
-        var getPasword = document.getElementById("pswrd");  
-        if (getPasword.type === "password") {  
-          getPasword.type = "text";  
-        } else {  
-          getPasword.type = "password";  
-        }  
-      }  
-        </script>  
-
-    <script src="<%= assetPath('js/U-profile.js') %>"></script> 
+    <script src= "<%= assetPath('js/U-profile.js') %>"></script> 
 </body>
 

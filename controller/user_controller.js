@@ -1,5 +1,5 @@
 import User from '../models/user.js';
-import Vendor from '../models/vendors.js';
+import Booking from '../models/bookings.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from "url";
@@ -9,20 +9,30 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 
-function profile(req, res){
-    
-    let user= User.findById(req.user._id)
-    user.populate('favVendors')
-    .exec(function(err,user){
-       // console.log(user);   
-        
-        return res.render('user-profilePage',{titl:`Profile Page`,
-            Vendor:user.favVendors, logged_In:true
-        });  
-       })
-    
-    
-    };        
+function profile(req, res){   };        
+
+
+    profile = async(req, res) => {   
+
+       //find all the bookings where user==current user
+        Booking.find({ user: req.user._id })
+        .populate('vendor')
+        .exec((err, bookings)=>{            
+            if(err){console.log(err); return;}
+        //get user object
+        let user= User.findById(req.user._id); 
+        //also populate favourite vendors of that user       
+        user.populate('favVendors')
+        .exec(function(err,user){                  
+            if(err){console.log(err); return;}
+
+            return res.render('user-profilePage',{titl:`Profile Page`,
+                                                    Vendor:user.favVendors, logged_In:true, 
+                                                    booKings: bookings } );
+              })
+          })
+
+    }
 
 
 function addFav(req, res){      

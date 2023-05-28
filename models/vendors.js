@@ -5,7 +5,9 @@ name:{ type:String, required:true },
 phone:{type: Number, required:true},
 pin:{ type: Number, required: true},
 cardNo:{type: Number, required:true},
-skill:{type:String, required:true}
+skill:{type:String, required:true},
+rating:{type:Number, default:"5"},
+star: {type:Number, default:"4"}
 },
 {
     timestamps: true
